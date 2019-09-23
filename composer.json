@@ -3,6 +3,14 @@
     "type": "library",
     "description": "",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Witkowski",
+            "email": "dev.gummibeer@gmail.com",
+            "homepage": "https://gummibeer.de",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^7.2",
         "illuminate/support": "^6.0",
@@ -39,14 +47,19 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
+        "phpinsights": "vendor/bin/phpinsights analyse ./src/ --format=console --no-interaction --min-quality=95 --min-complexity=50 --min-architecture=100 --min-style=100",
+        "phpmd": "vendor/bin/phpmd ./src/ text \"cleancode,controversial,design,naming,unusedcode\"",
+        "phpunit": "vendor/bin/phpunit --colors=always",
+        "phpunit-coverage": "vendor/bin/phpunit --colors=always --coverage-html=build",
         "test": [
             "@phpmd",
             "@phpinsights",
             "@phpunit"
-        ],
-        "phpunit": "vendor/bin/phpunit --colors=always",
-        "phpunit-coverage": "vendor/bin/phpunit --colors=always --coverage-html=build",
-        "phpmd": "vendor/bin/phpmd ./src/ text \"cleancode,controversial,design,naming,unusedcode\"",
-        "phpinsights": "vendor/bin/phpinsights analyse ./src/ --format=console --no-interaction --min-quality=95 --min-complexity=50 --min-architecture=100 --min-style=100"
+        ]
+    },
+    "support": {
+        "issues": "https://github.com/Astrotomic/stancy/issues",
+        "source": "https://github.com/Astrotomic/stancy",
+        "docs": "https://docs.astrotomic.info/stancy"
     }
 }
