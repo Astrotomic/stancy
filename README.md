@@ -1,4 +1,4 @@
-# Stancy
+![Stancy](docs/.gitbook/assets/stancy_github_social.png)
 
 [![TravisCI](https://img.shields.io/travis/Astrotomic/stancy?label=TravisCI&style=flat-square&cacheSeconds=600)](https://travis-ci.org/Astrotomic/stancy)
 [![StyleCI](https://styleci.io/repos/210212315/shield)](https://styleci.io/repos/210212315)
