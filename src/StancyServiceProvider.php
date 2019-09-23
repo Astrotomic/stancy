@@ -2,6 +2,7 @@
 
 namespace Astroromic\Stancy;
 
+use Astroromic\Stancy\Models\Page;
 use Illuminate\Support\ServiceProvider;
 use Spatie\SchemaOrg\Graph;
 
@@ -18,6 +19,7 @@ class StancyServiceProvider extends ServiceProvider
     {
         $this->registerConfig();
         $this->registerSchemaOrg();
+        $this->registerPage();
     }
 
     protected function registerConfig(): void
@@ -30,5 +32,10 @@ class StancyServiceProvider extends ServiceProvider
     protected function registerSchemaOrg(): void
     {
         $this->app->singleton(Graph::class);
+    }
+
+    protected function registerPage(): void
+    {
+        $this->app->bind(Page::class);
     }
 }
