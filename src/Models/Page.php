@@ -41,8 +41,8 @@ class Page implements Htmlable
 
     public function page(?string $page): self
     {
-        if(is_string($page)) {
-            if(!($page instanceof PageData)) {
+        if (is_string($page)) {
+            if (! ($page instanceof PageData)) {
                 throw new Exception(sprintf('The page data class [%s] has to extend %s.', $page, PageData::class));
             }
         }
@@ -70,11 +70,11 @@ class Page implements Htmlable
 
     protected function parse(): void
     {
-        if($this->page === null) {
+        if ($this->page === null) {
             return;
         }
 
-        if(is_array($this->data) && empty($this->data)) {
+        if (is_array($this->data) && empty($this->data)) {
             return;
         }
 
