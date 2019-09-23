@@ -38,4 +38,4 @@ script:
   - vendor/bin/phpunit --coverage-text --coverage-clover=build/clover.xml
 
 after_script:
-  - php vendor/bin/php-coveralls
+  - vendor/bin/php-coveralls
