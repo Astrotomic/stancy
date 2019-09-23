@@ -1,0 +1,52 @@
+{
+    "name": "astrotomic/stancy",
+    "type": "library",
+    "description": "",
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "illuminate/support": "^6.0",
+        "spatie/data-transfer-object": "^1.9",
+        "spatie/laravel-blade-x": "^2.3",
+        "spatie/laravel-export": "^0.1.5",
+        "spatie/laravel-feed": "^2.4",
+        "spatie/laravel-menu": "^3.4",
+        "spatie/laravel-sitemap": "^5.4",
+        "spatie/laravel-view-models": "^1.2",
+        "spatie/schema-org": "^2.3",
+        "spatie/sheets": "^1.3",
+        "spatie/yaml-front-matter": "^2.0"
+    },
+    "require-dev": {
+        "nunomaduro/phpinsights": "^1.9",
+        "orchestra/testbench": "^4.0",
+        "phpmd/phpmd": "^2.7",
+        "phpunit/phpunit": "^8.3"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Astrotomic\\Stancy\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Astrotomic\\Stancy\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "test": [
+            "@phpmd",
+            "@phpinsights",
+            "@phpunit"
+        ],
+        "phpunit": "vendor/bin/phpunit --colors=always",
+        "phpunit-coverage": "vendor/bin/phpunit --colors=always --coverage-html=build",
+        "phpmd": "vendor/bin/phpmd ./src/ text \"cleancode,controversial,design,naming,unusedcode\"",
+        "phpinsights": "vendor/bin/phpinsights analyse ./src/ --format=console --no-interaction --min-quality=95 --min-complexity=50 --min-architecture=100 --min-style=100"
+    }
+}
