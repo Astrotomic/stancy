@@ -12,7 +12,7 @@ build:
     analysis:
       tests:
         override:
-          - command: 'vendor/bin/phpinsights analyse ./ --format=checkstyle --no-interaction > analysis-phpinsights.xml'
+          - command: 'vendor/bin/phpinsights analyse ./ --format=checkstyle --no-interaction'
             analysis:
               file: 'analysis-phpinsights.xml'
               format: 'general-checkstyle'

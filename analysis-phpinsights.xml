@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<checkstyle>
+    <file name="src/Models/PageData.php">
+        <error severity="error" source="Type hint declaration" line="10" message="Method \Astroromic\Stancy\Models\PageData::make() does not have @param annotation for its traversable parameter $data."/>
+    </file>
+    <file name="src/Models/Page.php">
+        <error severity="error" source="Type hint declaration" line="19" message="@var annotation of property \Astroromic\Stancy\Models\Page::$data does not specify type hint for its items."/>
+        <error severity="error" source="Type hint declaration" line="25" message="Method \Astroromic\Stancy\Models\Page::__construct() does not have @param annotation for its traversable parameter $data."/>
+        <error severity="error" source="Type hint declaration" line="57" message="Method \Astroromic\Stancy\Models\Page::data() does not have @param annotation for its traversable parameter $data."/>
+    </file>
+</checkstyle>

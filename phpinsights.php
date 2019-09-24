@@ -43,7 +43,9 @@ return [
     */
 
     'exclude' => [
-        'tests/'
+        'tests/',
+        'phpinsights.php',
+        'config/'
     ],
 
     'add' => [
