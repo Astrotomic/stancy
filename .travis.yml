@@ -34,7 +34,7 @@ install:
 
 script:
   - vendor/bin/phpmd ./src/ text "cleancode,controversial,design,naming,unusedcode"
-  - vendor/bin/phpinsights analyse ./src/ --format=console --no-interaction --min-quality=95 --min-complexity=50 --min-architecture=100 --min-style=100 -v
+  - vendor/bin/phpinsights analyse ./ --format=console --no-interaction --min-quality=95 --min-complexity=50 --min-architecture=100 --min-style=100 -v
   - vendor/bin/phpunit --coverage-text --coverage-clover=build/clover.xml
 
 after_script:

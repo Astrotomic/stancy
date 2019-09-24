@@ -7,12 +7,13 @@ build:
     php: '7.2.13'
   dependencies:
     override:
-      - composer update --prefer-dist --no-suggest --no-interaction
+      - 'composer update --prefer-dist --no-suggest --no-interaction'
   nodes:
     analysis:
       tests:
         override:
-          - command: 'vendor/bin/phpinsights analyse ./ --format=checkstyle --no-interaction'
+          - 'php-scrutinizer-run'
+          - command: 'vendor/bin/phpinsights analyse ./ --format=checkstyle --no-interaction > analysis-phpinsights.xml'
             analysis:
               file: 'analysis-phpinsights.xml'
               format: 'general-checkstyle'
