@@ -6,6 +6,9 @@ build:
   environment:
     php: '7.2.13'
   nodes:
+    dependencies:
+      override:
+        - composer --prefer-dist --no-suggest --no-interaction
     analysis:
       tests:
         override:
