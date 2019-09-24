@@ -1,0 +1,15 @@
+filter:
+  excluded_paths:
+    - 'tests/*'
+
+build:
+  environment:
+    php: '7.2.13'
+  nodes:
+    analysis:
+      tests:
+        override:
+          - command: 'vendor/bin/phpinsights analyse ./src/ --format=checkstyle --no-interaction > analysis-phpinsights.xml'
+            analysis:
+              file: 'analysis-phpinsights.xml'
+              format: 'general-checkstyle'
