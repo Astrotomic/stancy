@@ -22,8 +22,7 @@
         "spatie/laravel-sitemap": "^5.4",
         "spatie/laravel-view-models": "^1.2",
         "spatie/schema-org": "^2.3",
-        "spatie/sheets": "^1.3",
-        "spatie/yaml-front-matter": "^2.0"
+        "spatie/sheets": "^1.3"
     },
     "require-dev": {
         "nunomaduro/phpinsights": "dev-master",
