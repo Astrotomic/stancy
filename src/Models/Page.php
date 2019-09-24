@@ -5,11 +5,13 @@ namespace Astrotomic\Stancy\Models;
 use Exception;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use Spatie\Sheets\Facades\Sheets;
+use Symfony\Component\HttpFoundation\Response;
 
-class Page implements Htmlable, Renderable
+class Page implements Htmlable, Renderable, Responsable
 {
     /** @var string|null */
     protected $view;
@@ -92,6 +94,18 @@ class Page implements Htmlable, Renderable
     public function toHtml(): string
     {
         return $this->render()->render();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function toResponse($request): Response
+    {
+        if ($request->wantsJson()) {
+            return response()->json($this->data);
+        }
+
+        return response($this->render());
     }
 
     protected function parse(): void

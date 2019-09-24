@@ -3,9 +3,11 @@
 namespace Astrotomic\Stancy\Tests;
 
 use Astrotomic\Stancy\StancyServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\Sheets\SheetsServiceProvider;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 abstract class TestCase extends Orchestra
 {
@@ -40,5 +42,19 @@ abstract class TestCase extends Orchestra
         $app['config']->set('sheets.collections.content', [
             'disk' => 'content',
         ]);
+    }
+
+    protected function getRequest(string $url = '/', array $headers = []): Request
+    {
+        return Request::createFromBase(
+            SymfonyRequest::create(
+                $this->prepareUrlForRequest($url),
+                'GET',
+                [],
+                [],
+                [],
+                $this->transformHeadersToServerVars($headers)
+            )
+        );
     }
 }

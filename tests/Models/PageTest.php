@@ -8,6 +8,8 @@ use Astrotomic\Stancy\Tests\TestCase;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Spatie\DataTransferObject\DataTransferObjectError;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final class PageTest extends TestCase
 {
@@ -43,6 +45,7 @@ final class PageTest extends TestCase
         static::assertInstanceOf(Page::class, $page);
         static::assertInstanceOf(View::class, $page->render());
         static::assertEquals('<h1>hello world</h1>', trim($page->toHtml()));
+        static::assertInstanceOf(Response::class, $page->toResponse($this->getRequest()));
     }
 
     /** @test */
@@ -53,6 +56,17 @@ final class PageTest extends TestCase
         static::assertInstanceOf(Page::class, $page);
         static::assertInstanceOf(View::class, $page->render());
         static::assertEquals('<h1>hello world</h1>', trim($page->toHtml()));
+        static::assertInstanceOf(Response::class, $page->toResponse($this->getRequest()));
+    }
+
+    /** @test */
+    public function it_returns_data_as_json_if_wanted(): void
+    {
+        $page = Page::makeFromSheet('content', 'home')->page(HomePageData::class);
+
+        $response = $page->toResponse($this->getRequest('/', ['Accept' => 'application/json']));
+
+        static::assertInstanceOf(JsonResponse::class, $response);
     }
 
     /** @test */
