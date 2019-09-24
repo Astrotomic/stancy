@@ -42,7 +42,7 @@ class Page implements Htmlable
     public function page(?string $page): self
     {
         if (is_string($page)) {
-            if (! ($page instanceof PageData)) {
+            if (! is_subclass_of($page, PageData::class)) {
                 throw new Exception(sprintf('The page data class [%s] has to extend %s.', $page, PageData::class));
             }
         }

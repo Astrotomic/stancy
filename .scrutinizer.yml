@@ -1,6 +1,7 @@
 filter:
   excluded_paths:
     - 'tests/*'
+    - 'phpinsights.php'
 
 build:
   environment:
