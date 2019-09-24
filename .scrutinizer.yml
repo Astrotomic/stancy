@@ -7,7 +7,7 @@ build:
     php: '7.2.13'
   dependencies:
     override:
-      - composer --prefer-dist --no-suggest --no-interaction
+      - composer update --prefer-dist --no-suggest --no-interaction
   nodes:
     analysis:
       tests:
