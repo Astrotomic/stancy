@@ -7,17 +7,17 @@ cache:
 matrix:
   include:
     - php: 7.2
-      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-lowest'
+      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-lowest' PHPINSIGHTS_FLAGS='--disable-security-check'
     - php: 7.2
-      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-stable'
+      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-stable' PHPINSIGHTS_FLAGS=''
     - php: 7.3
-      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-lowest'
+      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-lowest' PHPINSIGHTS_FLAGS='--disable-security-check'
     - php: 7.3
-      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-stable'
+      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-stable' PHPINSIGHTS_FLAGS=''
     - php: 7.4snapshot
-      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-lowest'
+      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-lowest' PHPINSIGHTS_FLAGS='--disable-security-check'
     - php: 7.4snapshot
-      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-stable'
+      env: LARAVEL='^6.0' TESTBENCH='^4.0' COMPOSER_FLAGS='--prefer-stable' PHPINSIGHTS_FLAGS=''
   fast_finish: true
   allow_failures:
     - php: 7.4snapshot
@@ -34,7 +34,7 @@ install:
 
 script:
   - vendor/bin/phpmd ./src/ text "cleancode,controversial,design,naming,unusedcode"
-  - vendor/bin/phpinsights analyse ./ --format=console --no-interaction --min-quality=95 --min-complexity=50 --min-architecture=100 --min-style=100 -v
+  - vendor/bin/phpinsights analyse ./ --format=console ${PHPINSIGHTS_FLAGS} --no-interaction --min-quality=95 --min-complexity=50 --min-architecture=100 --min-style=100 -v
   - vendor/bin/phpunit --coverage-text --coverage-clover=build/clover.xml
 
 after_script:
