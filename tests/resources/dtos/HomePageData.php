@@ -1,4 +1,5 @@
 <?php
+
 namespace Astrotomic\Stancy\Tests\PageDatas;
 
 use Astrotomic\Stancy\Models\PageData;

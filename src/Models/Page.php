@@ -42,7 +42,7 @@ class Page implements Htmlable, Renderable
     {
         $sheet = Sheets::collection($collection)->get($name);
 
-        if($sheet === null) {
+        if ($sheet === null) {
             throw new Exception(sprintf('No sheet found in collection [%s] with name [%s].', $collection, $name));
         }
 
