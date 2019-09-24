@@ -16,9 +16,9 @@ build:
           - 'php-scrutinizer-run'
           - command: 'vendor/bin/phpinsights analyse ./ --format=checkstyle --no-interaction > analysis-phpinsights.xml'
             analysis:
-              file: 'phpinsights.xml'
+              file: 'analysis-phpinsights.xml'
               format: 'general-checkstyle'
-          - command: 'vendor/bin/phpunit --coverage-text --coverage-clover=clover.xml'
+          - command: 'vendor/bin/phpunit --coverage-text --coverage-clover=analysis-phpunit.xml'
             coverage:
-              file: 'clover.xml'
+              file: 'analysis-phpunit.xml'
               format: 'clover'
