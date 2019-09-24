@@ -1,0 +1,13 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Until someone will answer your issue you can check out the [documentation](https://docs.astrotomic.info/stancy).'
+        pr-message: 'Thanks for your contribution. 💙🚀 Please ensure that you follow our [Coding Guidelines](https://github.com/Astrotomic/stancy/blob/master/CONTRIBUTING.md). '
