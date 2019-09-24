@@ -1,4 +1,5 @@
 ![Stancy](docs/.gitbook/assets/stancy_github_social.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAstrotomic%2Fstancy.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FAstrotomic%2Fstancy?ref=badge_shield)
 
 [![TravisCI](https://img.shields.io/travis/Astrotomic/stancy?label=TravisCI&style=flat-square&cacheSeconds=600)](https://travis-ci.org/Astrotomic/stancy)
 [![StyleCI](https://styleci.io/repos/210212315/shield)](https://styleci.io/repos/210212315)
@@ -41,3 +42,6 @@ Please see [SECURITY](SECURITY.md) for details.
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAstrotomic%2Fstancy.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FAstrotomic%2Fstancy?ref=badge_large)
