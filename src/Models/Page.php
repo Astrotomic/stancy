@@ -97,7 +97,7 @@ class Page implements Htmlable, Renderable, Responsable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function toResponse($request): Response
     {
