@@ -2,6 +2,8 @@
 
 use NunoMaduro\PhpInsights\Domain\Insights\CyclomaticComplexityIsHigh;
 use NunoMaduro\PhpInsights\Domain\Insights\ForbiddenNormalClasses;
+use NunoMaduro\PhpInsights\Domain\Insights\ForbiddenTraits;
+use ObjectCalisthenics\Sniffs\Classes\ForbiddenPublicPropertySniff;
 use ObjectCalisthenics\Sniffs\Files\ClassTraitAndInterfaceLengthSniff;
 use ObjectCalisthenics\Sniffs\Files\FunctionLengthSniff;
 use ObjectCalisthenics\Sniffs\Metrics\MethodPerClassLimitSniff;
@@ -68,6 +70,8 @@ return [
         DisallowArrayTypeHintSyntaxSniff::class,
         DisallowEmptySniff::class,
         DisallowMixedTypeHintSniff::class,
+        ForbiddenTraits::class,
+        ForbiddenPublicPropertySniff::class,
     ],
 
     'config' => [
