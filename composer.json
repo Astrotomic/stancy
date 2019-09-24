@@ -40,7 +40,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Astrotomic\\Stancy\\Tests\\": "tests/"
+            "Astrotomic\\Stancy\\Tests\\": "tests/",
+            "Astrotomic\\Stancy\\Tests\\PageDatas\\": "tests/resources/dtos"
         }
     },
     "minimum-stability": "stable",

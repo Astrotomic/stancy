@@ -1,8 +1,8 @@
 <?php
 
-namespace Astroromic\Stancy;
+namespace Astrotomic\Stancy;
 
-use Astroromic\Stancy\Models\Page;
+use Astrotomic\Stancy\Models\Page;
 use Illuminate\Support\ServiceProvider;
 use Spatie\SchemaOrg\Graph;
 

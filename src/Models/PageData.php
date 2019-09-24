@@ -1,6 +1,6 @@
 <?php
 
-namespace Astroromic\Stancy\Models;
+namespace Astrotomic\Stancy\Models;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Spatie\DataTransferObject\DataTransferObject;
