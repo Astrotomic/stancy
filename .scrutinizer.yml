@@ -5,10 +5,10 @@ filter:
 build:
   environment:
     php: '7.2.13'
+  dependencies:
+    override:
+      - composer --prefer-dist --no-suggest --no-interaction
   nodes:
-    dependencies:
-      override:
-        - composer --prefer-dist --no-suggest --no-interaction
     analysis:
       tests:
         override:
