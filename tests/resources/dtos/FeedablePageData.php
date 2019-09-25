@@ -16,7 +16,6 @@ class FeedablePageData extends PageData
             ->summary('This is my first blog post')
             ->updated(Carbon::now())
             ->link('https://example.com/blog/1')
-            ->author('Gummibeer')
-        ;
+            ->author('Gummibeer');
     }
 }
