@@ -18,7 +18,7 @@ abstract class PageData extends DataTransferObject implements Arrayable
     {
         foreach ($array as $key => $value) {
             if (is_object($value)) {
-                if($value instanceof DateTime) {
+                if ($value instanceof DateTime) {
                     $array[$key] = $value->format(DATE_RFC3339);
 
                     continue;
