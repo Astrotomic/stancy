@@ -3,15 +3,18 @@
 namespace Astrotomic\Stancy\Models;
 
 use Exception;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
+use JsonSerializable;
 use Spatie\Sheets\Facades\Sheets;
 use Symfony\Component\HttpFoundation\Response;
 
-class Page implements Htmlable, Renderable, Responsable
+class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable
 {
     /** @var string|null */
     protected $view;
@@ -96,13 +99,28 @@ class Page implements Htmlable, Renderable, Responsable
         return $this->render()->render();
     }
 
+    public function toArray(): array
+    {
+        return is_array($this->data) ? $this->data : $this->data->toArray();
+    }
+
+    public function jsonSerialize(): array
+    {
+        return $this->toArray();
+    }
+
+    public function toJson($options = 0): string
+    {
+        return json_encode($this->jsonSerialize(), $options);
+    }
+
     /**
      * {@inheritdoc}
      */
     public function toResponse($request): Response
     {
         if ($request->wantsJson()) {
-            return response()->json($this->data);
+            return response()->json($this->jsonSerialize());
         }
 
         return response($this->render());
@@ -116,7 +134,7 @@ class Page implements Htmlable, Renderable, Responsable
 
         $this->data = forward_static_call(
             [$this->page, 'make'],
-            is_array($this->data) ? $this->data : $this->data->toArray()
+            $this->toArray()
         );
     }
 }

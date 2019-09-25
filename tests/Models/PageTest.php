@@ -7,6 +7,7 @@ use Astrotomic\Stancy\Tests\PageDatas\HomePageData;
 use Astrotomic\Stancy\Tests\TestCase;
 use Exception;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\HtmlString;
 use Spatie\DataTransferObject\DataTransferObjectError;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -60,13 +61,33 @@ final class PageTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_data_as_json_if_wanted(): void
+    public function it_can_return_data_as_array(): void
+    {
+        $page = Page::makeFromSheet('content', 'home')->page(HomePageData::class);
+
+        static::assertEquals([
+            'contents' => new HtmlString("<h1>hello world</h1>\n"),
+            'slug' => 'home',
+        ], $page->toArray());
+    }
+
+    /** @test */
+    public function it_can_return_data_as_json(): void
+    {
+        $page = Page::makeFromSheet('content', 'home')->page(HomePageData::class);
+
+        static::assertEquals('{"contents":"<h1>hello world<\/h1>\n","slug":"home"}', $page->toJson());
+    }
+
+    /** @test */
+    public function it_responses_data_as_json_if_wanted(): void
     {
         $page = Page::makeFromSheet('content', 'home')->page(HomePageData::class);
 
         $response = $page->toResponse($this->getRequest('/', ['Accept' => 'application/json']));
 
         static::assertInstanceOf(JsonResponse::class, $response);
+        static::assertEquals('{"contents":"<h1>hello world<\/h1>\n","slug":"home"}', $response->getContent());
     }
 
     /** @test */

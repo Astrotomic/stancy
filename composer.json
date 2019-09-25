@@ -18,6 +18,7 @@
     ],
     "require": {
         "php": "^7.2",
+        "ext-json": "*",
         "illuminate/support": "^6.0",
         "spatie/data-transfer-object": "^1.9",
         "spatie/laravel-blade-x": "^2.3",
