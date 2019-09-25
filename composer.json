@@ -2,6 +2,11 @@
     "name": "astrotomic/stancy",
     "type": "library",
     "description": "",
+    "keywords": [
+        "laravel",
+        "lumen",
+        "illuminate"
+    ],
     "license": "MIT",
     "authors": [
         {
