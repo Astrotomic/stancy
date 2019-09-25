@@ -7,7 +7,6 @@
 [![ScrutinizerCI](https://img.shields.io/scrutinizer/build/g/Astrotomic/stancy?label=ScrutinizerCI&style=flat-square&cacheSeconds=600)](https://scrutinizer-ci.com/g/Astrotomic/stancy)
 [![Quality)](https://img.shields.io/scrutinizer/quality/g/Astrotomic/stancy?label=Quality&style=flat-square&cacheSeconds=600)](https://scrutinizer-ci.com/g/Astrotomic/stancy)
 [![Coveralls](https://img.shields.io/coveralls/github/Astrotomic/stancy?label=Coverage&style=flat-square&cacheSeconds=600)](https://coveralls.io/github/Astrotomic/stancy)
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/Astrotomic/stancy?label=Maintainability&style=flat-square&cacheSeconds=600)](https://codeclimate.com/github/Astrotomic/stancy)
 [![Libraries.io](https://img.shields.io/librariesio/github/Astrotomic/stancy?label=Dependencies&style=flat-square&cacheSeconds=600)](https://libraries.io/packagist/astrotomic%2Fstancy)
 
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/astrotomic/stancy?label=PHP&style=flat-square&cacheSeconds=600)](https://packagist.org/packages/astrotomic/stancy)
