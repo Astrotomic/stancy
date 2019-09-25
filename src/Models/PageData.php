@@ -3,14 +3,22 @@
 namespace Astrotomic\Stancy\Models;
 
 use DateTime;
+use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Spatie\DataTransferObject\DataTransferObject;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
-abstract class PageData extends DataTransferObject implements Arrayable
+abstract class PageData extends DataTransferObject implements Arrayable, Feedable
 {
     public static function make(array $data): self
     {
         return new static($data);
+    }
+
+    public function toFeedItem(): FeedItem
+    {
+        throw new Exception(sprintf('You have to define the transformation to a valid %s yourself if you want to use a feed.', FeedItem::class));
     }
 
     // https://github.com/spatie/data-transfer-object/issues/64

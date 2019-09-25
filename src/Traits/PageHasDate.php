@@ -9,6 +9,6 @@ use Spatie\Sheets\PathParsers\SlugWithDateParser;
  */
 trait PageHasDate
 {
-    /** @var \Carbon\CarbonInterface */
+    /** @var \Carbon\Carbon */
     public $date;
 }

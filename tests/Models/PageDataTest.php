@@ -2,12 +2,15 @@
 
 namespace Astrotomic\Stancy\Tests\Models;
 
+use Astrotomic\Stancy\Tests\PageDatas\FeedablePageData;
 use Astrotomic\Stancy\Tests\PageDatas\HomePageData;
 use Astrotomic\Stancy\Tests\PageDatas\ParseArrayPageData;
 use Astrotomic\Stancy\Tests\TestCase;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\HtmlString;
 use Spatie\DataTransferObject\DataTransferObjectError;
+use Spatie\Feed\FeedItem;
 
 final class PageDataTest extends TestCase
 {
@@ -76,5 +79,30 @@ final class PageDataTest extends TestCase
                 ['id' => 2],
             ],
         ], $page->toArray());
+    }
+
+    /** @test */
+    public function it_throws_exception_by_default_if_transformed_to_feed_item(): void
+    {
+        static::expectException(Exception::class);
+        static::expectExceptionMessage('You have to define the transformation to a valid Spatie\Feed\FeedItem yourself if you want to use a feed.');
+
+        HomePageData::make([
+            'contents' => new HtmlString('hello world'),
+            'slug' => 'home',
+        ])->toFeedItem();
+    }
+
+    /** @test */
+    public function it_returns_feed_item_with_custom_implementation(): void
+    {
+        Carbon::setTestNow('2019-09-25 11:53:14');
+
+        $page = FeedablePageData::make([]);
+
+        $feedItem = $page->toFeedItem();
+
+        static::assertInstanceOf(FeedItem::class, $feedItem);
+        $feedItem->validate();
     }
 }

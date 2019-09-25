@@ -11,10 +11,12 @@ use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use JsonSerializable;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 use Spatie\Sheets\Facades\Sheets;
 use Symfony\Component\HttpFoundation\Response;
 
-class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable
+class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable, Feedable
 {
     /** @var string|null */
     protected $view;
@@ -123,6 +125,15 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
         }
 
         return response($this->render());
+    }
+
+    public function toFeedItem(): FeedItem
+    {
+        if (! ($this->data instanceof PageData)) {
+            throw new Exception(sprintf('The page data has to extend %s to allow transformation to %s.', PageData::class, FeedItem::class));
+        }
+
+        return $this->data->toFeedItem();
     }
 
     protected function parse(): void
