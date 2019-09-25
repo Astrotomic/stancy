@@ -38,6 +38,13 @@
     "config": {
         "sort-packages": true
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Astrotomic\\Stancy\\StancyServiceProvider"
+            ]
+        }
+    },
     "autoload": {
         "psr-4": {
             "Astrotomic\\Stancy\\": "src/"
