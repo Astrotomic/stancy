@@ -109,17 +109,13 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
         return $this->toArray();
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public function toJson($options = 0): string
     {
         return json_encode($this->jsonSerialize(), $options);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public function toResponse($request): Response
     {
         if ($request->wantsJson()) {
