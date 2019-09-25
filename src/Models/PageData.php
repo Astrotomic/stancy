@@ -17,24 +17,22 @@ abstract class PageData extends DataTransferObject implements Arrayable
     protected function parseArray(array $array): array
     {
         foreach ($array as $key => $value) {
-            if (is_object($value)) {
-                if ($value instanceof DateTime) {
-                    $array[$key] = $value->format(DATE_RFC3339);
+            if ($this->isDateTime($value)) {
+                $array[$key] = $value->format(DATE_RFC3339);
 
-                    continue;
-                }
+                continue;
+            }
 
-                if (method_exists($value, 'toArray')) {
-                    $array[$key] = $value->toArray();
+            if ($this->isArrayable($value)) {
+                $array[$key] = $value->toArray();
 
-                    continue;
-                }
+                continue;
+            }
 
-                if (method_exists($value, '__toString')) {
-                    $array[$key] = $value->__toString();
+            if ($this->isStringable($value)) {
+                $array[$key] = $value->__toString();
 
-                    continue;
-                }
+                continue;
             }
 
             if (is_array($value)) {
@@ -43,5 +41,25 @@ abstract class PageData extends DataTransferObject implements Arrayable
         }
 
         return $array;
+    }
+
+    protected function isDateTime($value): bool
+    {
+        return $value instanceof DateTime;
+    }
+
+    protected function isArrayable($value): bool
+    {
+        return $this->isObjectWithMethod($value, 'toArray');
+    }
+
+    protected function isStringable($value): bool
+    {
+        return $this->isObjectWithMethod($value, '__toString');
+    }
+
+    protected function isObjectWithMethod($value, string $method): bool
+    {
+        return is_object($value) && method_exists($value, $method) && is_callable([$value, $method]);
     }
 }
