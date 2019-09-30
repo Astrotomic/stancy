@@ -3,6 +3,7 @@
 use NunoMaduro\PhpInsights\Domain\Insights\CyclomaticComplexityIsHigh;
 use NunoMaduro\PhpInsights\Domain\Insights\ForbiddenNormalClasses;
 use NunoMaduro\PhpInsights\Domain\Insights\ForbiddenTraits;
+use NunoMaduro\PhpInsights\Domain\Sniffs\ForbiddenSetterSniff;
 use ObjectCalisthenics\Sniffs\Classes\ForbiddenPublicPropertySniff;
 use ObjectCalisthenics\Sniffs\Files\ClassTraitAndInterfaceLengthSniff;
 use ObjectCalisthenics\Sniffs\Files\FunctionLengthSniff;
@@ -72,6 +73,7 @@ return [
         DisallowMixedTypeHintSniff::class,
         ForbiddenTraits::class,
         ForbiddenPublicPropertySniff::class,
+        ForbiddenSetterSniff::class,
     ],
 
     'config' => [
