@@ -3,6 +3,7 @@
 namespace Astrotomic\Stancy\Models;
 
 use Astrotomic\Stancy\Exceptions\SheetCollectionNotFoundException;
+use Astrotomic\Stancy\Exceptions\SheetNotFoundException;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
@@ -63,7 +64,7 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
         }
 
         if ($sheet === null) {
-            throw new Exception(sprintf('No sheet found in collection [%s] with name [%s].', $collection, $name));
+            throw SheetNotFoundException::make($collection, $name);
         }
 
         return static::make($sheet->toArray(), $page);
