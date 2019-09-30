@@ -77,7 +77,7 @@ class AddSheetToCollectionSolution implements RunnableSolution
     {
         $repository = Sheets::collection($this->collection);
 
-        if (!$repository instanceof FilesystemRepository) {
+        if (! $repository instanceof FilesystemRepository) {
             return;
         }
 

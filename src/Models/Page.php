@@ -59,7 +59,7 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
     {
         try {
             $sheet = Sheets::collection($collection)->get($name);
-        } catch(RuntimeException $exception) {
+        } catch (RuntimeException $exception) {
             throw SheetCollectionNotFoundException::make($collection, $exception);
         }
 
