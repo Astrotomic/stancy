@@ -30,7 +30,9 @@ final class SheetNotFoundExceptionTest extends TestCase
         static::assertEquals('Add sheet `foobar` to collection `content`.', $solution->getSolutionDescription());
         static::assertEquals('Add sheet file', $solution->getRunButtonText());
         static::assertEquals('Pressing the button below will try to add the sheet file to the collection filesystem.', $solution->getSolutionActionDescription());
-        static::assertEquals([], $solution->getRunParameters());
+        static::assertEquals([
+            'sheet' => 'foobar',
+        ], $solution->getRunParameters());
         static::assertEquals([], $solution->getDocumentationLinks());
     }
 
