@@ -33,6 +33,11 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
     public function __construct(ViewFactory $viewFactory, array $data = [], ?string $page = null)
     {
         $this->viewFactory = $viewFactory;
+
+        if (isset($data['_view'])) {
+            $this->view($data['_view']);
+        }
+
         $this->data($data);
         $this->page($page);
     }
