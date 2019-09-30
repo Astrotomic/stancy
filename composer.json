@@ -62,7 +62,7 @@
     "prefer-stable": true,
     "scripts": {
         "phpinsights": "vendor/bin/phpinsights analyse ./src/ --format=console --no-interaction --min-quality=95 --min-complexity=50 --min-architecture=100 --min-style=100 -v",
-        "phpmd": "vendor/bin/phpmd ./src/ text \"cleancode,controversial,design,naming,unusedcode\"",
+        "phpmd": "vendor/bin/phpmd ./src/ text phpmd.xml",
         "phpunit": "vendor/bin/phpunit --colors=always",
         "phpunit-coverage": "vendor/bin/phpunit --colors=always --coverage-html=build",
         "test": [

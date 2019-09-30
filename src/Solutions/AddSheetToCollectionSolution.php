@@ -53,7 +53,9 @@ class AddSheetToCollectionSolution implements RunnableSolution
 
     public function getRunParameters(): array
     {
-        return [];
+        return [
+            'sheet' => $this->sheet,
+        ];
     }
 
     public function getDocumentationLinks(): array
@@ -71,7 +73,7 @@ class AddSheetToCollectionSolution implements RunnableSolution
             return false;
         }
 
-        return $this->filesystem->put(Str::finish($this->sheet, '.'.$this->extension), '');
+        return $this->filesystem->put(Str::finish($parameters['sheet'] ?? $this->sheet, '.'.$this->extension), '');
     }
 
     protected function copyPropertiesFromFilesystemRepository(): void
