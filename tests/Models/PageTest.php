@@ -52,6 +52,17 @@ final class PageTest extends TestCase
     }
 
     /** @test */
+    public function it_can_render_from_sheet_with_yaml_front_matter_predefined_variables(): void
+    {
+        $page = Page::makeFromSheet('content', 'yamlFrontMatterPredefined');
+
+        static::assertInstanceOf(Page::class, $page);
+        static::assertInstanceOf(View::class, $page->render());
+        static::assertEquals('<h1>hello world</h1>', trim($page->toHtml()));
+        static::assertInstanceOf(Response::class, $page->toResponse($this->getRequest()));
+    }
+
+    /** @test */
     public function it_can_render_from_sheet_with_validated_data(): void
     {
         $page = Page::makeFromSheet('content', 'home')->view('pages.home')->page(HomePageData::class);
@@ -138,6 +149,14 @@ final class PageTest extends TestCase
         static::expectException(DataTransferObjectError::class);
 
         Page::make()->page(HomePageData::class);
+    }
+
+    /** @test */
+    public function it_throws_exception_if_data_is_not_valid_with_yaml_front_matter_predefined_variables(): void
+    {
+        static::expectException(DataTransferObjectError::class);
+
+        Page::makeFromSheet('content', 'yamlFrontMatterPredefinedInvalid');
     }
 
     /** @test */
