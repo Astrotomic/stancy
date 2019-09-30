@@ -19,6 +19,7 @@
     "require": {
         "php": "^7.2",
         "ext-json": "*",
+        "facade/ignition-contracts": "^1.0",
         "illuminate/support": "^6.0",
         "spatie/data-transfer-object": "^1.9",
         "spatie/laravel-blade-x": "^2.3",

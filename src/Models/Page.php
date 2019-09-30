@@ -2,6 +2,7 @@
 
 namespace Astrotomic\Stancy\Models;
 
+use Astrotomic\Stancy\Exceptions\SheetCollectionNotFoundException;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
@@ -11,6 +12,7 @@ use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use JsonSerializable;
+use RuntimeException;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\Sheets\Facades\Sheets;
@@ -54,7 +56,11 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
 
     public static function makeFromSheet(string $collection, string $name, ?string $page = null): self
     {
-        $sheet = Sheets::collection($collection)->get($name);
+        try {
+            $sheet = Sheets::collection($collection)->get($name);
+        } catch(RuntimeException $exception) {
+            throw SheetCollectionNotFoundException::make($collection, $exception);
+        }
 
         if ($sheet === null) {
             throw new Exception(sprintf('No sheet found in collection [%s] with name [%s].', $collection, $name));

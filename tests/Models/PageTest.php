@@ -2,6 +2,7 @@
 
 namespace Astrotomic\Stancy\Tests\Models;
 
+use Astrotomic\Stancy\Exceptions\SheetCollectionNotFoundException;
 use Astrotomic\Stancy\Models\Page;
 use Astrotomic\Stancy\Tests\PageDatas\FeedablePageData;
 use Astrotomic\Stancy\Tests\PageDatas\HomePageData;
@@ -101,6 +102,15 @@ final class PageTest extends TestCase
 
         static::assertInstanceOf(JsonResponse::class, $response);
         static::assertEquals('{"contents":"<h1>hello world<\/h1>\n","slug":"home"}', $response->getContent());
+    }
+
+    /** @test */
+    public function it_throws_exception_if_sheet_collection_does_not_exist(): void
+    {
+        static::expectException(SheetCollectionNotFoundException::class);
+        static::expectExceptionMessage('Sheet collection [foobar] does not exist.');
+
+        Page::makeFromSheet('foobar', 'undefined_sheet');
     }
 
     /** @test */
