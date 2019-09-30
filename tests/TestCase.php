@@ -39,8 +39,8 @@ abstract class TestCase extends Orchestra
             'root' => realpath(__DIR__.'/resources/content'),
         ]);
 
-        $app['config']->set('sheets.collections.content', [
-            'disk' => 'content',
+        $app['config']->set('sheets.collections', [
+            'content',
         ]);
     }
 
