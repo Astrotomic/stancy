@@ -4,6 +4,7 @@ namespace Astrotomic\Stancy\Solutions;
 
 use Facade\IgnitionContracts\RunnableSolution;
 use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 use ReflectionClass;
 use Spatie\Sheets\Facades\Sheets;
 use Spatie\Sheets\Repositories\FilesystemRepository;
@@ -70,7 +71,7 @@ class AddSheetToCollectionSolution implements RunnableSolution
             return false;
         }
 
-        return $this->filesystem->put($this->sheet.'.'.$this->extension, '');
+        return $this->filesystem->put(Str::finish($this->sheet, '.'.$this->extension), '');
     }
 
     protected function copyPropertiesFromFilesystemRepository(): void

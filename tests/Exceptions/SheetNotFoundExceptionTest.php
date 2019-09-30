@@ -50,6 +50,21 @@ final class SheetNotFoundExceptionTest extends TestCase
     }
 
     /** @test */
+    public function it_can_run_the_solution_with_a_sheet_containing_the_extension(): void
+    {
+        Storage::disk('content')->delete('foobar.md');
+        $exception = SheetNotFoundException::make('content', 'foobar.md');
+        /** @var AddSheetToCollectionSolution $solution */
+        $solution = $exception->getSolution();
+
+        static::assertInstanceOf(AddSheetToCollectionSolution::class, $solution);
+
+        static::assertTrue($solution->run());
+        static::assertTrue(Storage::disk('content')->exists('foobar.md'));
+        Storage::disk('content')->delete('foobar.md');
+    }
+
+    /** @test */
     public function it_can_run_the_solution_with_subdirectory_sheet(): void
     {
         Storage::disk('content')->deleteDirectory('sub');
