@@ -66,11 +66,11 @@ class AddSheetToCollectionSolution implements RunnableSolution
     public function run(array $parameters = []): bool
     {
         if ($this->filesystem === null) {
-            return false;
+            return false; // @codeCoverageIgnore
         }
 
         if ($this->extension === null) {
-            return false;
+            return false; // @codeCoverageIgnore
         }
 
         return $this->filesystem->put(Str::finish($parameters['sheet'] ?? $this->sheet, '.'.$this->extension), '');
@@ -81,7 +81,7 @@ class AddSheetToCollectionSolution implements RunnableSolution
         $repository = Sheets::collection($this->collection);
 
         if (! $repository instanceof FilesystemRepository) {
-            return;
+            return; // @codeCoverageIgnore
         }
 
         $repositoryReflection = new ReflectionClass($repository);
