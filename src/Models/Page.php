@@ -34,9 +34,11 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
     {
         $this->viewFactory = $viewFactory;
 
-        if (isset($data['_view'])) {
-            $this->view($data['_view']);
-        }
+        $this->view($data['_view'] ?? null);
+
+        $page = $page ?? $data['_pageData'] ?? null;
+
+        unset($data['_view'], $data['_pageData']);
 
         $this->data($data);
         $this->page($page);
@@ -85,7 +87,7 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
         return $this;
     }
 
-    public function view(string $view): self
+    public function view(?string $view): self
     {
         $this->view = $view;
 
