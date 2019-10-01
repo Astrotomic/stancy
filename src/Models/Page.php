@@ -10,9 +10,13 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Arr;
 use JsonSerializable;
+use RuntimeException;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
+use Spatie\Sheets\Facades\Sheets;
+use Spatie\Sheets\Sheet;
 use Symfony\Component\HttpFoundation\Response;
 
 class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable, Feedable
@@ -37,7 +41,7 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
 
         $page = $page ?? $data['_pageData'] ?? null;
 
-        unset($data['_view'], $data['_pageData']);
+        $data = array_merge($data, $this->getSheetData($data['_sheets'] ?? []));
 
         $this->data($data);
         $this->page($page);
@@ -60,7 +64,7 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
 
     public function data(array $data): self
     {
-        $this->data = $data;
+        $this->data = $this->prepareData($data);
 
         $this->parse();
 
@@ -133,5 +137,41 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
             [$this->page, 'make'],
             $this->toArray()
         );
+    }
+
+    protected function getSheetData(array $sheets): array
+    {
+        if (empty($sheets)) {
+            return [];
+        }
+
+        if (! Arr::isAssoc($sheets)) {
+            throw new RuntimeException('The [_sheets] data has to be an associative array.');
+        }
+
+        $data = [];
+
+        foreach ($sheets as $key => $sheet) {
+            [$collection, $path] = explode(':', $sheet);
+
+            if ($path === '*') {
+                $data[$key] = Sheets::collection($collection)->all()->map(function (Sheet $sheet) {
+                    return $this->prepareData($sheet->toArray());
+                })->all();
+
+                continue;
+            }
+
+            $data[$key] = $this->prepareData(Sheets::collection($collection)->get($path)->toArray());
+        }
+
+        return $data;
+    }
+
+    protected function prepareData(array $data): array
+    {
+        unset($data['_view'], $data['_pageData'], $data['_sheets']);
+
+        return $data;
     }
 }

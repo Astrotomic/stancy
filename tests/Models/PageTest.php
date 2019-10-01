@@ -9,6 +9,7 @@ use Astrotomic\Stancy\Tests\TestCase;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\HtmlString;
+use RuntimeException;
 use Spatie\DataTransferObject\DataTransferObjectError;
 use Spatie\Feed\FeedItem;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -88,6 +89,31 @@ final class PageTest extends TestCase
     }
 
     /** @test */
+    public function it_can_load_child_sheets(): void
+    {
+        $page = $this->getPageFactory()->makeFromSheet('content', 'blog');
+
+        static::assertEquals([
+            'contents' => '',
+            'slug' => 'blog',
+            'home' => [
+                'contents' => new HtmlString("<h1>hello world</h1>\n"),
+                'slug' => 'home',
+            ],
+            'posts' => [
+                [
+                    'contents' => new HtmlString("<h1>first post</h1>\n"),
+                    'slug' => 'first-post',
+                ],
+                [
+                    'contents' => new HtmlString("<h1>second post</h1>\n"),
+                    'slug' => 'second-post',
+                ],
+            ],
+        ], $page->toArray());
+    }
+
+    /** @test */
     public function it_throws_exception_if_page_data_class_does_not_exist(): void
     {
         static::expectException(Exception::class);
@@ -141,6 +167,15 @@ final class PageTest extends TestCase
         static::expectExceptionMessage('The page data has to extend Astrotomic\Stancy\Models\PageData to allow transformation to Spatie\Feed\FeedItem.');
 
         $this->getPageFactory()->make()->toFeedItem();
+    }
+
+    /** @test */
+    public function it_throws_exception_if_sheets_array_is_not_associative(): void
+    {
+        static::expectException(RuntimeException::class);
+        static::expectExceptionMessage('The [_sheets] data has to be an associative array.');
+
+        $this->getPageFactory()->makeFromSheet('content', 'yamlFrontMatterChildSheetsInvalid');
     }
 
     /** @test */

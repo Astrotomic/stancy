@@ -39,9 +39,14 @@ abstract class TestCase extends Orchestra
             'driver' => 'local',
             'root' => realpath(__DIR__.'/resources/content'),
         ]);
+        $app['config']->set('filesystems.disks.blog', [
+            'driver' => 'local',
+            'root' => realpath(__DIR__.'/resources/content/blog'),
+        ]);
 
         $app['config']->set('sheets.collections', [
             'content',
+            'blog',
         ]);
     }
 

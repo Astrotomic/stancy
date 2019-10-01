@@ -15,9 +15,9 @@ class SheetNotFoundException extends RuntimeException implements ProvidesSolutio
     /** @var string */
     protected $sheet;
 
-    public static function make(string $collection, string $sheet): self
+    public static function make(string $collection, string $path): self
     {
-        return (new static("Sheet [{$sheet}] in collection [{$collection}] does not exist."))->setCollection($collection)->setSheet($sheet);
+        return (new static("Sheet [{$path}] in collection [{$collection}] does not exist."))->setCollection($collection)->setSheet($path);
     }
 
     public function getCollection(): string
