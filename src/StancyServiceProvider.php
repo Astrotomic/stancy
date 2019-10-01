@@ -2,6 +2,7 @@
 
 namespace Astrotomic\Stancy;
 
+use Astrotomic\Stancy\Factories\PageFactory;
 use Astrotomic\Stancy\Models\Page;
 use Illuminate\Support\ServiceProvider;
 use Spatie\SchemaOrg\Graph;
@@ -36,6 +37,7 @@ class StancyServiceProvider extends ServiceProvider
 
     protected function registerPage(): void
     {
+        $this->app->singleton(PageFactory::class);
         $this->app->bind(Page::class);
     }
 }

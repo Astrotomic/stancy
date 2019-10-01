@@ -2,6 +2,7 @@
 
 namespace Astrotomic\Stancy\Tests;
 
+use Astrotomic\Stancy\Factories\PageFactory;
 use Astrotomic\Stancy\StancyServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -56,5 +57,10 @@ abstract class TestCase extends Orchestra
                 $this->transformHeadersToServerVars($headers)
             )
         );
+    }
+
+    protected function getPageFactory(): PageFactory
+    {
+        return $this->app->make(PageFactory::class);
     }
 }

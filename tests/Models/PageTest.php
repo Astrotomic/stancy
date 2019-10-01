@@ -2,8 +2,6 @@
 
 namespace Astrotomic\Stancy\Tests\Models;
 
-use Astrotomic\Stancy\Exceptions\SheetCollectionNotFoundException;
-use Astrotomic\Stancy\Exceptions\SheetNotFoundException;
 use Astrotomic\Stancy\Models\Page;
 use Astrotomic\Stancy\Tests\PageDatas\FeedablePageData;
 use Astrotomic\Stancy\Tests\PageDatas\HomePageData;
@@ -27,25 +25,9 @@ final class PageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_make_instance(): void
-    {
-        $page = Page::make();
-
-        static::assertInstanceOf(Page::class, $page);
-    }
-
-    /** @test */
-    public function it_can_make_instance_from_sheet(): void
-    {
-        $page = Page::makeFromSheet('content', 'home');
-
-        static::assertInstanceOf(Page::class, $page);
-    }
-
-    /** @test */
     public function it_can_render_from_sheet(): void
     {
-        $page = Page::makeFromSheet('content', 'home')->view('pages.home');
+        $page = $this->getPageFactory()->makeFromSheet('content', 'home')->view('pages.home');
 
         static::assertInstanceOf(Page::class, $page);
         static::assertInstanceOf(View::class, $page->render());
@@ -56,7 +38,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_render_from_sheet_with_yaml_front_matter_predefined_variables(): void
     {
-        $page = Page::makeFromSheet('content', 'yamlFrontMatterPredefined');
+        $page = $this->getPageFactory()->makeFromSheet('content', 'yamlFrontMatterPredefined');
 
         static::assertInstanceOf(Page::class, $page);
         static::assertInstanceOf(View::class, $page->render());
@@ -67,7 +49,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_render_from_sheet_with_validated_data(): void
     {
-        $page = Page::makeFromSheet('content', 'home')->view('pages.home')->page(HomePageData::class);
+        $page = $this->getPageFactory()->makeFromSheet('content', 'home')->view('pages.home')->page(HomePageData::class);
 
         static::assertInstanceOf(Page::class, $page);
         static::assertInstanceOf(View::class, $page->render());
@@ -78,7 +60,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_return_data_as_array(): void
     {
-        $page = Page::makeFromSheet('content', 'home')->page(HomePageData::class);
+        $page = $this->getPageFactory()->makeFromSheet('content', 'home')->page(HomePageData::class);
 
         static::assertEquals([
             'contents' => new HtmlString("<h1>hello world</h1>\n"),
@@ -89,7 +71,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_return_data_as_json(): void
     {
-        $page = Page::makeFromSheet('content', 'home')->page(HomePageData::class);
+        $page = $this->getPageFactory()->makeFromSheet('content', 'home')->page(HomePageData::class);
 
         static::assertEquals('{"contents":"<h1>hello world<\/h1>\n","slug":"home"}', $page->toJson());
     }
@@ -97,7 +79,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_responses_data_as_json_if_wanted(): void
     {
-        $page = Page::makeFromSheet('content', 'home')->page(HomePageData::class);
+        $page = $this->getPageFactory()->makeFromSheet('content', 'home')->page(HomePageData::class);
 
         $response = $page->toResponse($this->getRequest('/', ['Accept' => 'application/json']));
 
@@ -106,30 +88,12 @@ final class PageTest extends TestCase
     }
 
     /** @test */
-    public function it_throws_exception_if_sheet_collection_does_not_exist(): void
-    {
-        static::expectException(SheetCollectionNotFoundException::class);
-        static::expectExceptionMessage('Sheet collection [foobar] does not exist.');
-
-        Page::makeFromSheet('foobar', 'undefined_sheet');
-    }
-
-    /** @test */
-    public function it_throws_exception_if_sheet_does_not_exist(): void
-    {
-        static::expectException(SheetNotFoundException::class);
-        static::expectExceptionMessage('Sheet [undefined_sheet] in collection [content] does not exist.');
-
-        Page::makeFromSheet('content', 'undefined_sheet');
-    }
-
-    /** @test */
     public function it_throws_exception_if_page_data_class_does_not_exist(): void
     {
         static::expectException(Exception::class);
         static::expectExceptionMessage('The page data class [Strange\Unexisting\Class] has to extend Astrotomic\Stancy\Models\PageData.');
 
-        Page::make([], 'Strange\Unexisting\Class');
+        $this->getPageFactory()->make([], 'Strange\Unexisting\Class');
     }
 
     /** @test */
@@ -138,7 +102,7 @@ final class PageTest extends TestCase
         static::expectException(Exception::class);
         static::expectExceptionMessage('The page data class [Astrotomic\Stancy\Models\Page] has to extend Astrotomic\Stancy\Models\PageData.');
 
-        Page::make([], Page::class);
+        $this->getPageFactory()->make([], Page::class);
     }
 
     /** @test */
@@ -147,7 +111,7 @@ final class PageTest extends TestCase
         static::expectException(Exception::class);
         static::expectExceptionMessage('You have to define a view before the page can render.');
 
-        $page = Page::make();
+        $page = $this->getPageFactory()->make();
 
         static::assertInstanceOf(Page::class, $page);
 
@@ -159,7 +123,7 @@ final class PageTest extends TestCase
     {
         static::expectException(DataTransferObjectError::class);
 
-        Page::make()->page(HomePageData::class);
+        $this->getPageFactory()->make()->page(HomePageData::class);
     }
 
     /** @test */
@@ -167,7 +131,7 @@ final class PageTest extends TestCase
     {
         static::expectException(DataTransferObjectError::class);
 
-        Page::makeFromSheet('content', 'yamlFrontMatterPredefinedInvalid');
+        $this->getPageFactory()->makeFromSheet('content', 'yamlFrontMatterPredefinedInvalid');
     }
 
     /** @test */
@@ -176,13 +140,13 @@ final class PageTest extends TestCase
         static::expectException(Exception::class);
         static::expectExceptionMessage('The page data has to extend Astrotomic\Stancy\Models\PageData to allow transformation to Spatie\Feed\FeedItem.');
 
-        Page::make()->toFeedItem();
+        $this->getPageFactory()->make()->toFeedItem();
     }
 
     /** @test */
     public function it_returns_feed_item_if_page_data_supports_it(): void
     {
-        $feedItem = Page::make()->page(FeedablePageData::class)->toFeedItem();
+        $feedItem = $this->getPageFactory()->make()->page(FeedablePageData::class)->toFeedItem();
 
         static::assertInstanceOf(FeedItem::class, $feedItem);
         $feedItem->validate();

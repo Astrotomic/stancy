@@ -2,8 +2,6 @@
 
 namespace Astrotomic\Stancy\Models;
 
-use Astrotomic\Stancy\Exceptions\SheetCollectionNotFoundException;
-use Astrotomic\Stancy\Exceptions\SheetNotFoundException;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
@@ -13,10 +11,8 @@ use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use JsonSerializable;
-use RuntimeException;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
-use Spatie\Sheets\Facades\Sheets;
 use Symfony\Component\HttpFoundation\Response;
 
 class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable, Feedable
@@ -45,29 +41,6 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
 
         $this->data($data);
         $this->page($page);
-    }
-
-    public static function make(array $data = [], ?string $page = null): self
-    {
-        return app(static::class, [
-            'data' => $data,
-            'page' => $page,
-        ]);
-    }
-
-    public static function makeFromSheet(string $collection, string $name, ?string $page = null): self
-    {
-        try {
-            $sheet = Sheets::collection($collection)->get($name);
-        } catch (RuntimeException $exception) {
-            throw SheetCollectionNotFoundException::make($collection, $exception);
-        }
-
-        if ($sheet === null) {
-            throw SheetNotFoundException::make($collection, $name);
-        }
-
-        return static::make($sheet->toArray(), $page);
     }
 
     public function page(?string $page): self
