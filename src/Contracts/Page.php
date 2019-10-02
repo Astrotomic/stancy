@@ -2,14 +2,14 @@
 
 namespace Astrotomic\Stancy\Contracts;
 
-use Spatie\Feed\FeedItem;
 use Illuminate\Contracts\View\View;
+use Spatie\Feed\FeedItem;
 use Symfony\Component\HttpFoundation\Response;
 
 interface Page
 {
     public function page(?string $page): self;
-    
+
     public function data(array $data): self;
 
     public function view(?string $view): self;
