@@ -2,6 +2,7 @@
 
 namespace Astrotomic\Stancy\Models;
 
+use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
@@ -19,7 +20,7 @@ use Spatie\Sheets\Facades\Sheets;
 use Spatie\Sheets\Sheet;
 use Symfony\Component\HttpFoundation\Response;
 
-class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable, Feedable
+class Page implements PageContract, Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable, Feedable
 {
     /** @var string|null */
     protected $view;
@@ -47,7 +48,7 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
         $this->page($page);
     }
 
-    public function page(?string $page): self
+    public function page(?string $page): PageContract
     {
         if (is_string($page)) {
             if (! is_subclass_of($page, PageData::class, true)) {
@@ -62,7 +63,7 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
         return $this;
     }
 
-    public function data(array $data): self
+    public function data(array $data): PageContract
     {
         $this->data = $this->prepareData($data);
 
@@ -71,7 +72,7 @@ class Page implements Htmlable, Renderable, Responsable, Arrayable, Jsonable, Js
         return $this;
     }
 
-    public function view(?string $view): self
+    public function view(?string $view): PageContract
     {
         $this->view = $view;
 

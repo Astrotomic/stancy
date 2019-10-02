@@ -2,13 +2,14 @@
 
 namespace Astrotomic\Stancy\Factories;
 
+use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
 use Astrotomic\Stancy\Exceptions\SheetCollectionNotFoundException;
 use Astrotomic\Stancy\Exceptions\SheetNotFoundException;
 use Astrotomic\Stancy\Models\Page;
 use RuntimeException;
 use Spatie\Sheets\Facades\Sheets;
 
-class PageFactory
+class PageFactory implements PageFactoryContract
 {
     public function make(array $data = [], ?string $page = null): Page
     {
