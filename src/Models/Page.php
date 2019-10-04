@@ -79,7 +79,7 @@ class Page implements PageContract
             throw new Exception('You have to define a view before the page can render.');
         }
 
-        return $this->viewFactory->make($this->view, $this->data);
+        return $this->viewFactory->make($this->view, $this->toArray());
     }
 
     public function toHtml(): string
