@@ -2,11 +2,18 @@
 
 namespace Astrotomic\Stancy\Contracts;
 
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\View\View;
+use JsonSerializable;
+use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Symfony\Component\HttpFoundation\Response;
 
-interface Page
+interface Page extends Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable, Feedable
 {
     public function page(?string $page): self;
 

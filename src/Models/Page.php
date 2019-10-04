@@ -4,23 +4,16 @@ namespace Astrotomic\Stancy\Models;
 
 use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Exception;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Contracts\Support\Jsonable;
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Contracts\View\Factory as ViewFactoryContract;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
-use JsonSerializable;
 use RuntimeException;
-use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\Sheets\Facades\Sheets;
 use Spatie\Sheets\Sheet;
 use Symfony\Component\HttpFoundation\Response;
 
-class Page implements PageContract, Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable, Feedable
+class Page implements PageContract
 {
     /** @var string|null */
     protected $view;
@@ -31,10 +24,10 @@ class Page implements PageContract, Htmlable, Renderable, Responsable, Arrayable
     /** @var PageData|array */
     protected $data = [];
 
-    /** @var ViewFactory */
+    /** @var ViewFactoryContract */
     protected $viewFactory;
 
-    public function __construct(ViewFactory $viewFactory, array $data = [], ?string $page = null)
+    public function __construct(ViewFactoryContract $viewFactory, array $data = [], ?string $page = null)
     {
         $this->viewFactory = $viewFactory;
 
