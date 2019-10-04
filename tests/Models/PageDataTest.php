@@ -94,6 +94,18 @@ final class PageDataTest extends TestCase
     }
 
     /** @test */
+    public function it_throws_exception_by_default_if_transformed_to_sitemap_item(): void
+    {
+        static::expectException(Exception::class);
+        static::expectExceptionMessage('You have to define the transformation to a valid Spatie\Sitemap\Tags\Tag yourself if you want to use a sitemap.');
+
+        HomePageData::make([
+            'contents' => new HtmlString('hello world'),
+            'slug' => 'home',
+        ])->toSitemapItem();
+    }
+
+    /** @test */
     public function it_returns_feed_item_with_custom_implementation(): void
     {
         Carbon::setTestNow('2019-09-25 11:53:14');

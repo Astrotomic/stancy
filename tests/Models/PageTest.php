@@ -171,6 +171,15 @@ final class PageTest extends TestCase
     }
 
     /** @test */
+    public function it_throws_exception_on_sitemap_item_transformation_if_data_is_not_page_data_class(): void
+    {
+        static::expectException(Exception::class);
+        static::expectExceptionMessage('The page data has to extend Astrotomic\Stancy\Models\PageData to allow transformation to Spatie\Sitemap\Tags\Tag.');
+
+        $this->getPageFactory()->make()->toSitemapItem();
+    }
+
+    /** @test */
     public function it_throws_exception_if_sheets_array_is_not_associative(): void
     {
         static::expectException(RuntimeException::class);
