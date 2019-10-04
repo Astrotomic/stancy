@@ -23,7 +23,7 @@ class SitemapFactory implements SitemapFactoryContract
     {
         $sitemap = Sitemap::create();
 
-        $collection->all()->each(function (Sheet $sheet) use ($sitemap) {
+        $collection->all()->each(function (Sheet $sheet) use ($sitemap): void {
             $sitemap->add($this->pageFactory->makeFromSheet($sheet)->toSitemapItem());
         });
 
