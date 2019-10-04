@@ -6,7 +6,6 @@ use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
 use Astrotomic\Stancy\Exceptions\SheetCollectionNotFoundException;
 use Astrotomic\Stancy\Exceptions\SheetNotFoundException;
-use Astrotomic\Stancy\Models\Page;
 use RuntimeException;
 use Spatie\Sheets\Facades\Sheets;
 
@@ -14,7 +13,7 @@ class PageFactory implements PageFactoryContract
 {
     public function make(array $data = [], ?string $page = null): PageContract
     {
-        return app(Page::class, [
+        return app(PageContract::class, [
             'data' => $data,
             'page' => $page,
         ]);

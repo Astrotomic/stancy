@@ -2,6 +2,8 @@
 
 namespace Astrotomic\Stancy;
 
+use Astrotomic\Stancy\Contracts\Page as PageContract;
+use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
 use Astrotomic\Stancy\Factories\PageFactory;
 use Astrotomic\Stancy\Models\Page;
 use Illuminate\Support\ServiceProvider;
@@ -37,7 +39,7 @@ class StancyServiceProvider extends ServiceProvider
 
     protected function registerPage(): void
     {
-        $this->app->singleton(PageFactory::class);
-        $this->app->bind(Page::class);
+        $this->app->singleton(PageFactoryContract::class, PageFactory::class);
+        $this->app->bind(PageContract::class, Page::class);
     }
 }
