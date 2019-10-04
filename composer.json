@@ -31,7 +31,8 @@
         "nunomaduro/phpinsights": "dev-master",
         "orchestra/testbench": "^4.0",
         "phpmd/phpmd": "^2.7",
-        "phpunit/phpunit": "^8.3"
+        "phpunit/phpunit": "^8.3",
+        "spatie/phpunit-snapshot-assertions": "^2.1"
     },
     "config": {
         "sort-packages": true
@@ -40,7 +41,10 @@
         "laravel": {
             "providers": [
                 "Astrotomic\\Stancy\\StancyServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "FeedFactory": "Astrotomic\\Stancy\\Facades\\FeedFactory"
+            }
         }
     },
     "autoload": {
