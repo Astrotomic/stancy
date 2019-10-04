@@ -7,7 +7,6 @@ use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
 use Astrotomic\Stancy\Factories\PageFactory;
 use Astrotomic\Stancy\Models\Page;
 use Illuminate\Support\ServiceProvider;
-use Spatie\SchemaOrg\Graph;
 
 class StancyServiceProvider extends ServiceProvider
 {
@@ -21,7 +20,6 @@ class StancyServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->registerConfig();
-        $this->registerSchemaOrg();
         $this->registerPage();
     }
 
@@ -30,11 +28,6 @@ class StancyServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/stancy.php', 'stancy'
         );
-    }
-
-    protected function registerSchemaOrg(): void
-    {
-        $this->app->singleton(Graph::class);
     }
 
     protected function registerPage(): void
