@@ -2,7 +2,7 @@
 
 namespace Astrotomic\Stancy\Tests;
 
-use Astrotomic\Stancy\Factories\PageFactory;
+use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
 use Astrotomic\Stancy\StancyServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -64,8 +64,8 @@ abstract class TestCase extends Orchestra
         );
     }
 
-    protected function getPageFactory(): PageFactory
+    protected function getPageFactory(): PageFactoryContract
     {
-        return $this->app->make(PageFactory::class);
+        return $this->app->make(PageFactoryContract::class);
     }
 }

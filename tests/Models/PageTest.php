@@ -2,6 +2,7 @@
 
 namespace Astrotomic\Stancy\Tests\Models;
 
+use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Astrotomic\Stancy\Models\Page;
 use Astrotomic\Stancy\Tests\PageDatas\FeedablePageData;
 use Astrotomic\Stancy\Tests\PageDatas\HomePageData;
@@ -20,7 +21,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_resolve_instance(): void
     {
-        $page = $this->app->make(Page::class);
+        $page = $this->app->make(PageContract::class);
 
         static::assertInstanceOf(Page::class, $page);
     }

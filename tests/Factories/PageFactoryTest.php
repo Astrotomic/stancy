@@ -6,16 +6,7 @@ use Astrotomic\Stancy\Exceptions\SheetCollectionNotFoundException;
 use Astrotomic\Stancy\Exceptions\SheetNotFoundException;
 use Astrotomic\Stancy\Factories\PageFactory;
 use Astrotomic\Stancy\Models\Page;
-use Astrotomic\Stancy\Tests\PageDatas\FeedablePageData;
-use Astrotomic\Stancy\Tests\PageDatas\HomePageData;
 use Astrotomic\Stancy\Tests\TestCase;
-use Exception;
-use Illuminate\Contracts\View\View;
-use Illuminate\Support\HtmlString;
-use Spatie\DataTransferObject\DataTransferObjectError;
-use Spatie\Feed\FeedItem;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 final class PageFactoryTest extends TestCase
 {
