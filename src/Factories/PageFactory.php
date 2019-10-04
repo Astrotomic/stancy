@@ -8,6 +8,7 @@ use Astrotomic\Stancy\Exceptions\SheetCollectionNotFoundException;
 use Astrotomic\Stancy\Exceptions\SheetNotFoundException;
 use RuntimeException;
 use Spatie\Sheets\Facades\Sheets;
+use Spatie\Sheets\Sheet;
 
 class PageFactory implements PageFactoryContract
 {
@@ -19,7 +20,12 @@ class PageFactory implements PageFactoryContract
         ]);
     }
 
-    public function makeFromSheet(string $collection, string $name, ?string $page = null): PageContract
+    public function makeFromSheet(Sheet $sheet, ?string $page = null): PageContract
+    {
+        return static::make($sheet->toArray(), $page);
+    }
+
+    public function makeFromSheetName(string $collection, string $name, ?string $page = null): PageContract
     {
         try {
             $sheet = Sheets::collection($collection)->get($name);
@@ -31,6 +37,6 @@ class PageFactory implements PageFactoryContract
             throw SheetNotFoundException::make($collection, $name);
         }
 
-        return static::make($sheet->toArray(), $page);
+        return static::makeFromSheet($sheet, $page);
     }
 }

@@ -27,7 +27,7 @@ final class PageFactoryTest extends TestCase
     /** @test */
     public function it_can_make_page_from_sheet(): void
     {
-        $page = $this->getPageFactory()->makeFromSheet('content', 'home');
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'home');
 
         static::assertInstanceOf(Page::class, $page);
     }
@@ -38,7 +38,7 @@ final class PageFactoryTest extends TestCase
         static::expectException(SheetCollectionNotFoundException::class);
         static::expectExceptionMessage('Sheet collection [foobar] does not exist.');
 
-        $this->getPageFactory()->makeFromSheet('foobar', 'undefined_sheet');
+        $this->getPageFactory()->makeFromSheetName('foobar', 'undefined_sheet');
     }
 
     /** @test */
@@ -47,6 +47,6 @@ final class PageFactoryTest extends TestCase
         static::expectException(SheetNotFoundException::class);
         static::expectExceptionMessage('Sheet [undefined_sheet] in collection [content] does not exist.');
 
-        $this->getPageFactory()->makeFromSheet('content', 'undefined_sheet');
+        $this->getPageFactory()->makeFromSheetName('content', 'undefined_sheet');
     }
 }
