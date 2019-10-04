@@ -3,6 +3,7 @@
 namespace Astrotomic\Stancy\Factories;
 
 use Astrotomic\Stancy\Contracts\FeedFactory as FeedFactoryContract;
+use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
 use Spatie\Sheets\Facades\Sheets;
 use Spatie\Sheets\Repository as SheetRepository;
@@ -20,7 +21,7 @@ class FeedFactory implements FeedFactoryContract
 
     public function makeFromSheetCollection(SheetRepository $collection): array
     {
-        return $collection->all()->map(function (Sheet $sheet) {
+        return $collection->all()->map(function (Sheet $sheet): PageContract {
             return $this->pageFactory->makeFromSheet($sheet);
         })->all();
     }
