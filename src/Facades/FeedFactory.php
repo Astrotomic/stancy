@@ -10,7 +10,7 @@ use Spatie\Sheets\Repository as SheetRepository;
  * @method static array makeFromSheetCollection(SheetRepository $collection)
  * @method static array makeFromSheetCollectionName(string $name)
  *
- * @see \Astrotomic\Stancy\Contracts\FeedFactory
+ * @see FeedFactoryContract
  */
 class FeedFactory extends Facade
 {
