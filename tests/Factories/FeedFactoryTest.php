@@ -2,8 +2,8 @@
 
 namespace Astrotomic\Stancy\Tests\Factories;
 
-use Astrotomic\Stancy\Facades\FeedFactory as FeedFactoryFacade;
 use Astrotomic\Stancy\Contracts\FeedFactory as FeedFactoryContract;
+use Astrotomic\Stancy\Facades\FeedFactory as FeedFactoryFacade;
 use Astrotomic\Stancy\Factories\FeedFactory;
 use Astrotomic\Stancy\Tests\TestCase;
 use Carbon\Carbon;

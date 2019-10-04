@@ -20,7 +20,7 @@ class FeedFactory implements FeedFactoryContract
 
     public function makeFromSheetCollection(SheetRepository $collection): array
     {
-        return $collection->all()->map(function(Sheet $sheet) {
+        return $collection->all()->map(function (Sheet $sheet) {
             return $this->pageFactory->makeFromSheet($sheet);
         })->all();
     }
