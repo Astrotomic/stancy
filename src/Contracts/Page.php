@@ -13,7 +13,7 @@ use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Symfony\Component\HttpFoundation\Response;
 
-interface Page extends Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable, Feedable
+interface Page extends Htmlable, Renderable, Responsable, Arrayable, Jsonable, JsonSerializable, Feedable, Sitemapable
 {
     public function page(?string $page): self;
 

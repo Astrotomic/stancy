@@ -11,6 +11,7 @@ use RuntimeException;
 use Spatie\Feed\FeedItem;
 use Spatie\Sheets\Facades\Sheets;
 use Spatie\Sheets\Sheet;
+use Spatie\Sitemap\Tags\Tag;
 use Symfony\Component\HttpFoundation\Response;
 
 class Page implements PageContract
@@ -119,6 +120,15 @@ class Page implements PageContract
         }
 
         return $this->data->toFeedItem();
+    }
+
+    public function toSitemapItem(): Tag
+    {
+        if (! ($this->data instanceof PageData)) {
+            throw new Exception(sprintf('The page data has to extend %s to allow transformation to %s.', PageData::class, Tag::class));
+        }
+
+        return $this->data->toSitemapItem();
     }
 
     protected function parse(): void

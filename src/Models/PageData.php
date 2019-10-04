@@ -2,14 +2,16 @@
 
 namespace Astrotomic\Stancy\Models;
 
+use Astrotomic\Stancy\Contracts\Sitemapable;
 use DateTime;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Spatie\DataTransferObject\DataTransferObject;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
+use Spatie\Sitemap\Tags\Tag;
 
-abstract class PageData extends DataTransferObject implements Arrayable, Feedable
+abstract class PageData extends DataTransferObject implements Arrayable, Feedable, Sitemapable
 {
     public static function make(array $data): self
     {
@@ -19,6 +21,11 @@ abstract class PageData extends DataTransferObject implements Arrayable, Feedabl
     public function toFeedItem(): FeedItem
     {
         throw new Exception(sprintf('You have to define the transformation to a valid %s yourself if you want to use a feed.', FeedItem::class));
+    }
+
+    public function toSitemapItem(): Tag
+    {
+        throw new Exception(sprintf('You have to define the transformation to a valid %s yourself if you want to use a sitemap.', Tag::class));
     }
 
     // https://github.com/spatie/data-transfer-object/issues/64

@@ -2,12 +2,15 @@
 
 namespace Astrotomic\Stancy;
 
+use Astrotomic\Stancy\Contracts\FeedFactory as FeedFactoryContract;
 use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
+use Astrotomic\Stancy\Contracts\SitemapFactory as SitemapFactoryContract;
+use Astrotomic\Stancy\Factories\FeedFactory;
 use Astrotomic\Stancy\Factories\PageFactory;
+use Astrotomic\Stancy\Factories\SitemapFactory;
 use Astrotomic\Stancy\Models\Page;
 use Illuminate\Support\ServiceProvider;
-use Spatie\SchemaOrg\Graph;
 
 class StancyServiceProvider extends ServiceProvider
 {
@@ -21,8 +24,9 @@ class StancyServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->registerConfig();
-        $this->registerSchemaOrg();
         $this->registerPage();
+        $this->registerFeed();
+        $this->registerSitemap();
     }
 
     protected function registerConfig(): void
@@ -32,14 +36,19 @@ class StancyServiceProvider extends ServiceProvider
         );
     }
 
-    protected function registerSchemaOrg(): void
-    {
-        $this->app->singleton(Graph::class);
-    }
-
     protected function registerPage(): void
     {
         $this->app->singleton(PageFactoryContract::class, PageFactory::class);
         $this->app->bind(PageContract::class, Page::class);
+    }
+
+    protected function registerFeed(): void
+    {
+        $this->app->singleton(FeedFactoryContract::class, FeedFactory::class);
+    }
+
+    protected function registerSitemap(): void
+    {
+        $this->app->singleton(SitemapFactoryContract::class, SitemapFactory::class);
     }
 }

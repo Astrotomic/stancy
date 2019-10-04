@@ -29,7 +29,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_render_from_sheet(): void
     {
-        $page = $this->getPageFactory()->makeFromSheet('content', 'home')->view('pages.home');
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'home')->view('pages.home');
 
         static::assertInstanceOf(Page::class, $page);
         static::assertInstanceOf(View::class, $page->render());
@@ -40,7 +40,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_render_from_sheet_with_yaml_front_matter_predefined_variables(): void
     {
-        $page = $this->getPageFactory()->makeFromSheet('content', 'yamlFrontMatterPredefined');
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'yamlFrontMatterPredefined');
 
         static::assertInstanceOf(Page::class, $page);
         static::assertInstanceOf(View::class, $page->render());
@@ -51,7 +51,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_render_from_sheet_with_validated_data(): void
     {
-        $page = $this->getPageFactory()->makeFromSheet('content', 'home')->view('pages.home')->page(HomePageData::class);
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'home')->view('pages.home')->page(HomePageData::class);
 
         static::assertInstanceOf(Page::class, $page);
         static::assertInstanceOf(View::class, $page->render());
@@ -62,7 +62,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_return_data_as_array(): void
     {
-        $page = $this->getPageFactory()->makeFromSheet('content', 'home')->page(HomePageData::class);
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'home')->page(HomePageData::class);
 
         static::assertEquals([
             'contents' => new HtmlString("<h1>hello world</h1>\n"),
@@ -73,7 +73,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_return_data_as_json(): void
     {
-        $page = $this->getPageFactory()->makeFromSheet('content', 'home')->page(HomePageData::class);
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'home')->page(HomePageData::class);
 
         static::assertEquals('{"contents":"<h1>hello world<\/h1>\n","slug":"home"}', $page->toJson());
     }
@@ -81,7 +81,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_responses_data_as_json_if_wanted(): void
     {
-        $page = $this->getPageFactory()->makeFromSheet('content', 'home')->page(HomePageData::class);
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'home')->page(HomePageData::class);
 
         $response = $page->toResponse($this->getRequest('/', ['Accept' => 'application/json']));
 
@@ -92,7 +92,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_load_child_sheets(): void
     {
-        $page = $this->getPageFactory()->makeFromSheet('content', 'blog');
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'blog');
 
         static::assertEquals([
             'contents' => '',
@@ -158,7 +158,7 @@ final class PageTest extends TestCase
     {
         static::expectException(DataTransferObjectError::class);
 
-        $this->getPageFactory()->makeFromSheet('content', 'yamlFrontMatterPredefinedInvalid');
+        $this->getPageFactory()->makeFromSheetName('content', 'yamlFrontMatterPredefinedInvalid');
     }
 
     /** @test */
@@ -171,12 +171,21 @@ final class PageTest extends TestCase
     }
 
     /** @test */
+    public function it_throws_exception_on_sitemap_item_transformation_if_data_is_not_page_data_class(): void
+    {
+        static::expectException(Exception::class);
+        static::expectExceptionMessage('The page data has to extend Astrotomic\Stancy\Models\PageData to allow transformation to Spatie\Sitemap\Tags\Tag.');
+
+        $this->getPageFactory()->make()->toSitemapItem();
+    }
+
+    /** @test */
     public function it_throws_exception_if_sheets_array_is_not_associative(): void
     {
         static::expectException(RuntimeException::class);
         static::expectExceptionMessage('The [_sheets] data has to be an associative array.');
 
-        $this->getPageFactory()->makeFromSheet('content', 'yamlFrontMatterChildSheetsInvalid');
+        $this->getPageFactory()->makeFromSheetName('content', 'yamlFrontMatterChildSheetsInvalid');
     }
 
     /** @test */

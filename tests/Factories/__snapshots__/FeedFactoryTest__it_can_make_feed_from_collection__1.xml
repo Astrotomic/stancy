@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://localhost/feed/blog</id>
+  <link href="http://localhost/feed/blog"/>
+  <title><![CDATA[test blog feed]]></title>
+  <description/>
+  <language/>
+  <updated>Wed, 25 Sep 2019 11:53:14 +0000</updated>
+  <entry>
+    <title><![CDATA[first-post]]></title>
+    <link rel="alternate" href="http://localhost/first-post"/>
+    <id>http://localhost/first-post</id>
+    <author>
+      <name><![CDATA[Gummibeer]]></name>
+    </author>
+    <summary type="html"><![CDATA[<h1>first post</h1>
+]]></summary>
+    <category type="html"><![CDATA[]]></category>
+    <updated>Wed, 25 Sep 2019 11:53:14 +0000</updated>
+  </entry>
+  <entry>
+    <title><![CDATA[second-post]]></title>
+    <link rel="alternate" href="http://localhost/second-post"/>
+    <id>http://localhost/second-post</id>
+    <author>
+      <name><![CDATA[Gummibeer]]></name>
+    </author>
+    <summary type="html"><![CDATA[<h1>second post</h1>
+]]></summary>
+    <category type="html"><![CDATA[]]></category>
+    <updated>Wed, 25 Sep 2019 11:53:14 +0000</updated>
+  </entry>
+</feed>

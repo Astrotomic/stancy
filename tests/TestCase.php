@@ -2,12 +2,16 @@
 
 namespace Astrotomic\Stancy\Tests;
 
+use Astrotomic\Stancy\Contracts\FeedFactory as FeedFactoryContract;
 use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
+use Astrotomic\Stancy\Contracts\SitemapFactory as SitemapFactoryContract;
 use Astrotomic\Stancy\StancyServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Spatie\Feed\FeedServiceProvider;
 use Spatie\Sheets\SheetsServiceProvider;
+use Spatie\Sitemap\SitemapServiceProvider;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 abstract class TestCase extends Orchestra
@@ -30,6 +34,8 @@ abstract class TestCase extends Orchestra
     {
         return array_merge(parent::getApplicationProviders($app), [
             SheetsServiceProvider::class,
+            FeedServiceProvider::class,
+            SitemapServiceProvider::class,
         ]);
     }
 
@@ -67,5 +73,15 @@ abstract class TestCase extends Orchestra
     protected function getPageFactory(): PageFactoryContract
     {
         return $this->app->make(PageFactoryContract::class);
+    }
+
+    protected function getFeedFactory(): FeedFactoryContract
+    {
+        return $this->app->make(FeedFactoryContract::class);
+    }
+
+    protected function getSitemapFactory(): SitemapFactoryContract
+    {
+        return $this->app->make(SitemapFactoryContract::class);
     }
 }
