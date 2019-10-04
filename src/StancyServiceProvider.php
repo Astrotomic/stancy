@@ -2,10 +2,10 @@
 
 namespace Astrotomic\Stancy;
 
-use Astrotomic\Stancy\Contracts\SitemapFactory as SitemapFactoryContract;
 use Astrotomic\Stancy\Contracts\FeedFactory as FeedFactoryContract;
 use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
+use Astrotomic\Stancy\Contracts\SitemapFactory as SitemapFactoryContract;
 use Astrotomic\Stancy\Factories\FeedFactory;
 use Astrotomic\Stancy\Factories\PageFactory;
 use Astrotomic\Stancy\Factories\SitemapFactory;
