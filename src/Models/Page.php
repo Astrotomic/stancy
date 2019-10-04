@@ -89,12 +89,12 @@ class Page implements PageContract
 
     public function toArray(): array
     {
-        return is_array($this->data) ? $this->data : $this->data->toArray();
+        return is_array($this->data) ? $this->data : $this->data->all();
     }
 
     public function jsonSerialize(): array
     {
-        return $this->toArray();
+        return is_array($this->data) ? $this->data : $this->data->toArray();
     }
 
     /** {@inheritdoc} */

@@ -4,6 +4,7 @@ namespace Astrotomic\Stancy\Tests\Models;
 
 use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Astrotomic\Stancy\Models\Page;
+use Astrotomic\Stancy\Tests\PageDatas\BlogPostPageData;
 use Astrotomic\Stancy\Tests\PageDatas\FeedablePageData;
 use Astrotomic\Stancy\Tests\PageDatas\HomePageData;
 use Astrotomic\Stancy\Tests\TestCase;
@@ -95,21 +96,21 @@ final class PageTest extends TestCase
         $page = $this->getPageFactory()->makeFromSheetName('content', 'blog');
 
         static::assertEquals([
-            'contents' => '',
+            'contents' => new HtmlString(''),
             'slug' => 'blog',
-            'home' => [
+            'home' => HomePageData::make([
                 'contents' => new HtmlString("<h1>hello world</h1>\n"),
                 'slug' => 'home',
-            ],
+            ]),
             'posts' => [
-                [
+                BlogPostPageData::make([
                     'contents' => new HtmlString("<h1>first post</h1>\n"),
                     'slug' => 'first-post',
-                ],
-                [
+                ]),
+                BlogPostPageData::make([
                     'contents' => new HtmlString("<h1>second post</h1>\n"),
                     'slug' => 'second-post',
-                ],
+                ]),
             ],
         ], $page->toArray());
     }
