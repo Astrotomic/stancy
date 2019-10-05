@@ -44,7 +44,8 @@
             ],
             "aliases": {
                 "FeedFactory": "Astrotomic\\Stancy\\Facades\\FeedFactory",
-                "SitemapFactory": "Astrotomic\\Stancy\\Facades\\SitemapFactory"
+                "SitemapFactory": "Astrotomic\\Stancy\\Facades\\SitemapFactory",
+                "PageFactory": "Astrotomic\\Stancy\\Facades\\PageFactory"
             }
         }
     },

@@ -2,18 +2,20 @@
 
 namespace Astrotomic\Stancy\Facades;
 
+use Astrotomic\Stancy\Contracts\Page as PageContract;
+use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
 use Illuminate\Support\Facades\Facade;
-use Astrotomic\Stancy\Contracts\PageFactory as AstrotomicPageFactory;
 
 /**
- * @method PageContract make(array $data = [], ?string $page = null) Creates a Page
- * @method PageContract makeFromSheet(string $collection, string $name, ?string $page = null) Creates a Page from a Sheet
- * @see \Astrotomic\Stancy\Contracts\PageFactory
+ * @method static PageContract make(array $data = [], ?string $page = null)
+ * @method static PageContract makeFromSheet(string $collection, string $name, ?string $page = null)
+ * @method static PageContract makeFromSheetName(string $collection, string $name, ?string $page = null)
+ * @see PageFactoryContract
  */
 class PageFactory extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return AstrotomicPageFactory::class;
+        return PageFactoryContract::class;
     }
 }
