@@ -30,6 +30,10 @@ composer test
 
 Please see [CHANGELOG](docs/changelog.md) for more information on what has changed recently.
 
+## Versioning
+
+This package follows [semantic versioning](https://semver.org/). Except the `0.x.y` releases - these can introduce breaking changes in MINOR releases. So until a stable `1.x.y` release is out you should use `~0.x.y` ([tilde version range](https://getcomposer.org/doc/articles/versions.md#tilde-version-range-)) to fix to a MINOR release.
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
