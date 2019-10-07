@@ -1,6 +1,6 @@
 ![Stancy](docs/.gitbook/assets/stancy_github_social.png)
 
-[![TravisCI](https://img.shields.io/travis/Astrotomic/stancy?label=TravisCI&style=flat-square&cacheSeconds=600)](https://travis-ci.org/Astrotomic/stancy)
+[![TravisCI](https://img.shields.io/travis/Astrotomic/stancy/master?label=TravisCI&style=flat-square&cacheSeconds=600)](https://travis-ci.org/Astrotomic/stancy/branches)
 [![StyleCI](https://styleci.io/repos/210212315/shield)](https://styleci.io/repos/210212315)
 [![ScrutinizerCI](https://img.shields.io/scrutinizer/build/g/Astrotomic/stancy?label=ScrutinizerCI&style=flat-square&cacheSeconds=600)](https://scrutinizer-ci.com/g/Astrotomic/stancy)
 [![Quality)](https://img.shields.io/scrutinizer/quality/g/Astrotomic/stancy?label=Quality&style=flat-square&cacheSeconds=600)](https://scrutinizer-ci.com/g/Astrotomic/stancy)
