@@ -4,9 +4,11 @@ namespace Astrotomic\Stancy\Tests\Factories;
 
 use Astrotomic\Stancy\Exceptions\SheetCollectionNotFoundException;
 use Astrotomic\Stancy\Exceptions\SheetNotFoundException;
+use Astrotomic\Stancy\Facades\PageFactory as PageFactoryFacade;
 use Astrotomic\Stancy\Factories\PageFactory;
 use Astrotomic\Stancy\Models\Page;
 use Astrotomic\Stancy\Tests\TestCase;
+use Spatie\Sheets\Facades\Sheets;
 
 final class PageFactoryTest extends TestCase
 {
@@ -14,6 +16,16 @@ final class PageFactoryTest extends TestCase
     public function it_can_resolve_instance(): void
     {
         static::assertInstanceOf(PageFactory::class, $this->getPageFactory());
+    }
+
+    /** @test */
+    public function it_can_use_facade(): void
+    {
+        PageFactoryFacade::shouldReceive('make', 'makeFromSheet', 'makeFromSheetName');
+
+        PageFactoryFacade::make();
+        PageFactoryFacade::makeFromSheet(Sheets::collection('content')->get('home'));
+        PageFactoryFacade::makeFromSheetName('content', 'home');
     }
 
     /** @test */
