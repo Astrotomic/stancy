@@ -15,6 +15,12 @@
 [![Open Collective](https://img.shields.io/opencollective/all/astrotomic?label=Backers&style=flat-square&cacheSeconds=600)](https://opencollective.com/astrotomic)
 [![GitBook](https://img.shields.io/badge/GitBook-Stancy-E91E63.svg?style=flat-square&cacheSeconds=600)](https://docs.astrotomic.info/stancy)
 
+## Installation
+
+```bash
+composer require astrotomic/stancy
+```
+
 ## Demos
 
 * [astrotomic/stancy-laravel-demo](https://github.com/Astrotomic/stancy-laravel-demo)
