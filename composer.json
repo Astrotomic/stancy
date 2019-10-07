@@ -24,7 +24,7 @@
         "spatie/data-transfer-object": "^1.9",
         "spatie/laravel-export": "^0.2.0",
         "spatie/laravel-feed": "^2.4",
-        "spatie/laravel-sitemap": "^5.4",
+        "spatie/laravel-sitemap": "^5.5",
         "spatie/sheets": "^1.3.3"
     },
     "require-dev": {
