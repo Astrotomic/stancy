@@ -2,10 +2,11 @@
 
 namespace Astrotomic\Stancy\Factories;
 
+use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
 use Astrotomic\Stancy\Contracts\SitemapFactory as SitemapFactoryContract;
+use Illuminate\Support\Str;
 use Spatie\Sheets\Facades\Sheets;
-use Spatie\Sheets\Repository as SheetRepository;
 use Spatie\Sheets\Sheet;
 use Spatie\Sitemap\Sitemap;
 
@@ -19,21 +20,65 @@ class SitemapFactory implements SitemapFactoryContract
         $this->pageFactory = $pageFactory;
     }
 
-    public function makeFromSheetCollection(SheetRepository $collection): Sitemap
+    /**
+     * @param PageContract[] $pages
+     *
+     * @return Sitemap
+     */
+    public function makeFromPages(array $pages): Sitemap
     {
         $sitemap = Sitemap::create();
 
-        $collection->all()->each(function (Sheet $sheet) use ($sitemap): void {
-            $sitemap->add($this->pageFactory->makeFromSheet($sheet)->toSitemapItem());
-        });
+        foreach($pages as $page) {
+            $sitemap->add($page->toSitemapItem());
+        }
 
         return $sitemap;
     }
 
+    /**
+     * @param string[] $list
+     *
+     * @return Sitemap
+     */
+    public function makeFromSheetList(array $list): Sitemap
+    {
+        $pages = [];
+
+        foreach($list as $entry) {
+            if (Str::contains($entry, ':')) {
+                [$collection, $path] = explode(':', $entry);
+
+                $pages[] = $this->sheetToPage(Sheets::collection($collection)->get($path));
+
+                continue;
+            }
+
+            $pages = array_merge($pages, $this->sheetsToPages(Sheets::collection($entry)->all()->all()));
+        }
+
+        return $this->makeFromPages($pages);
+    }
+
     public function makeFromSheetCollectionName(string $name): Sitemap
     {
-        $collection = Sheets::collection($name);
+        return $this->makeFromSheetList([$name]);
+    }
 
-        return $this->makeFromSheetCollection($collection);
+    /**
+     * @param Sheet[] $sheets
+     *
+     * @return PageContract[]
+     */
+    protected function sheetsToPages(array $sheets): array
+    {
+        return array_map(function(Sheet $sheet): PageContract {
+            return $this->sheetToPage($sheet);
+        }, $sheets);
+    }
+
+    protected function sheetToPage(Sheet $sheet): PageContract
+    {
+        return $this->pageFactory->makeFromSheet($sheet);
     }
 }

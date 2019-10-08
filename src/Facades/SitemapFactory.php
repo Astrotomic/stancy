@@ -8,7 +8,8 @@ use Spatie\Sheets\Repository as SheetRepository;
 use Spatie\Sitemap\Sitemap;
 
 /**
- * @method static Sitemap makeFromSheetCollection(SheetRepository $collection)
+ * @method static Sitemap makeFromPages(array $pages)
+ * @method static Sitemap makeFromSheetList(array $list)
  * @method static Sitemap makeFromSheetCollectionName(string $name)
  *
  * @see SitemapFactoryContract
