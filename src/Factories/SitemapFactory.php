@@ -29,7 +29,7 @@ class SitemapFactory implements SitemapFactoryContract
     {
         $sitemap = Sitemap::create();
 
-        foreach($pages as $page) {
+        foreach ($pages as $page) {
             $sitemap->add($page->toSitemapItem());
         }
 
@@ -45,7 +45,7 @@ class SitemapFactory implements SitemapFactoryContract
     {
         $pages = [];
 
-        foreach($list as $entry) {
+        foreach ($list as $entry) {
             if (Str::contains($entry, ':')) {
                 [$collection, $path] = explode(':', $entry);
 
@@ -72,7 +72,7 @@ class SitemapFactory implements SitemapFactoryContract
      */
     protected function sheetsToPages(array $sheets): array
     {
-        return array_map(function(Sheet $sheet): PageContract {
+        return array_map(function (Sheet $sheet): PageContract {
             return $this->sheetToPage($sheet);
         }, $sheets);
     }

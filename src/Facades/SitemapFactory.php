@@ -4,7 +4,6 @@ namespace Astrotomic\Stancy\Facades;
 
 use Astrotomic\Stancy\Contracts\SitemapFactory as SitemapFactoryContract;
 use Illuminate\Support\Facades\Facade;
-use Spatie\Sheets\Repository as SheetRepository;
 use Spatie\Sitemap\Sitemap;
 
 /**
