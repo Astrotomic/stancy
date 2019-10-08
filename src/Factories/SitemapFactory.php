@@ -21,22 +21,6 @@ class SitemapFactory implements SitemapFactoryContract
     }
 
     /**
-     * @param PageContract[] $pages
-     *
-     * @return Sitemap
-     */
-    public function makeFromPages(array $pages): Sitemap
-    {
-        $sitemap = Sitemap::create();
-
-        foreach ($pages as $page) {
-            $sitemap->add($page->toSitemapItem());
-        }
-
-        return $sitemap;
-    }
-
-    /**
      * @param string[] $list
      *
      * @return Sitemap
@@ -63,6 +47,22 @@ class SitemapFactory implements SitemapFactoryContract
     public function makeFromSheetCollectionName(string $name): Sitemap
     {
         return $this->makeFromSheetList([$name]);
+    }
+
+    /**
+     * @param PageContract[] $pages
+     *
+     * @return Sitemap
+     */
+    protected function makeFromPages(array $pages): Sitemap
+    {
+        $sitemap = Sitemap::create();
+
+        foreach ($pages as $page) {
+            $sitemap->add($page->toSitemapItem());
+        }
+
+        return $sitemap;
     }
 
     /**

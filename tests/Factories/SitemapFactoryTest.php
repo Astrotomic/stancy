@@ -21,9 +21,10 @@ final class SitemapFactoryTest extends TestCase
     /** @test */
     public function it_can_use_facade(): void
     {
-        SitemapFactoryFacade::shouldReceive('makeFromPages', 'makeFromSheetList', 'makeFromSheetCollectionName');
+        SitemapFactoryFacade::shouldReceive('makeFromSheetList', 'makeFromSheetCollectionName');
 
         SitemapFactoryFacade::makeFromSheetCollectionName('blog');
+        SitemapFactoryFacade::makeFromSheetList(['blog:first-post', 'blog:second-post']);
     }
 
     /** @test */
