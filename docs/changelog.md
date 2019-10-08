@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Removed
 - `\Astrotomic\Stancy\Factories\SitemapFactory::makeFromSheetCollection()`
+- `\Astrotomic\Stancy\Factories\FeedFactory::makeFromSheetCollection()`
 
 
 ## [v0.1.0] - 2019-10-07

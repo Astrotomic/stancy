@@ -19,17 +19,17 @@ class FeedFactory implements FeedFactoryContract
         $this->pageFactory = $pageFactory;
     }
 
-    public function makeFromSheetCollection(SheetRepository $collection): array
-    {
-        return $collection->all()->map(function (Sheet $sheet): PageContract {
-            return $this->pageFactory->makeFromSheet($sheet);
-        })->all();
-    }
-
     public function makeFromSheetCollectionName(string $name): array
     {
         $collection = Sheets::collection($name);
 
         return $this->makeFromSheetCollection($collection);
+    }
+
+    protected function makeFromSheetCollection(SheetRepository $collection): array
+    {
+        return $collection->all()->map(function (Sheet $sheet): PageContract {
+            return $this->pageFactory->makeFromSheet($sheet);
+        })->all();
     }
 }
