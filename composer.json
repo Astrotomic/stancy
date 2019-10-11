@@ -29,7 +29,7 @@
     },
     "require-dev": {
         "nunomaduro/phpinsights": "dev-master",
-        "orchestra/testbench": "^4.0",
+        "orchestra/testbench": "^4.2",
         "phpmd/phpmd": "^2.7",
         "phpunit/phpunit": "^8.3",
         "spatie/phpunit-snapshot-assertions": "^2.1"
