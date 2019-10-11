@@ -10,30 +10,26 @@ use Astrotomic\Stancy\Factories\FeedFactory;
 use Astrotomic\Stancy\Factories\PageFactory;
 use Astrotomic\Stancy\Factories\SitemapFactory;
 use Astrotomic\Stancy\Models\Page;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class StancyServiceProvider extends ServiceProvider
+class StancyServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    public function boot(): void
-    {
-        $this->publishes([
-            __DIR__.'/../config/stancy.php' => config_path('stancy.php'),
-        ], 'config');
-    }
-
     public function register(): void
     {
-        $this->registerConfig();
         $this->registerPage();
         $this->registerFeed();
         $this->registerSitemap();
     }
 
-    protected function registerConfig(): void
+    public function provides(): array
     {
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/stancy.php', 'stancy'
-        );
+        return [
+            PageFactoryContract::class,
+            PageContract::class,
+            FeedFactoryContract::class,
+            SitemapFactoryContract::class,
+        ];
     }
 
     protected function registerPage(): void
