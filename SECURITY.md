@@ -10,13 +10,10 @@ Instead we will determine this on a case by case basis - depending on factors li
 * usage of the versions (packagist downloads)
 * effort needed to fix it in the versions
 
-We will do our best to fix security issues as and when they become apparent. We will attempt inform all users about 
-possible issues.
+We will do our best to fix security issues as and when they become apparent. We will attempt inform all users about possible issues.
 
 ## Reporting a Vulnerability
 
-Due to the fact that security vulnerabilities could harm users, we ask that you don't use the public issue tracker 
-to report them.
+Due to the fact that security vulnerabilities could harm users, we ask that you don't use the public issue tracker to report them.
 Please write a mail to [dev.gummibeer@gmail.com](mailto:dev.gummibeer@gmail.com).
 We will either create a public issue/security alert, or we will fix the vulnerability and inform users afterwards. 
-
