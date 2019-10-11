@@ -4,6 +4,11 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
+### Changed
+- `\Astrotomic\Stancy\StancyServiceProvider` is now deferred
+
+### Removed
+- unused package configuration
 
 ## [v0.2.0] - 2019-10-11
 ### Added
