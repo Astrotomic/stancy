@@ -15,6 +15,10 @@
 [![Open Collective](https://img.shields.io/opencollective/all/astrotomic?label=Backers&style=flat-square&cacheSeconds=600)](https://opencollective.com/astrotomic)
 [![GitBook](https://img.shields.io/badge/GitBook-Stancy-E91E63.svg?style=flat-square&cacheSeconds=600)](https://docs.astrotomic.info/stancy)
 
+**You search for a CMS that only extends your loved Laravel/Lumen framework? Here it is.**
+
+This package aims to provide the most common and not limiting CMS features. You can still use the frontend/template engine of your choice, use the scheduler/queue and receive POST requests.
+
 ## Installation
 
 ```bash
