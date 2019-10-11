@@ -13,7 +13,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - `\Astrotomic\Stancy\Factories\SitemapFactory::makeFromSheetCollection()`
 - `\Astrotomic\Stancy\Factories\FeedFactory::makeFromSheetCollection()`
 
-
 ## [v0.1.0] - 2019-10-07
 ### Added
 - First release - until [v1.0.0] kind of proof of concept
