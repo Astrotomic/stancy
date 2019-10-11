@@ -26,17 +26,13 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app): array
     {
         return [
-            StancyServiceProvider::class,
-        ];
-    }
-
-    protected function getApplicationProviders($app): array
-    {
-        return array_merge(parent::getApplicationProviders($app), [
+            // dependencies
             SheetsServiceProvider::class,
             FeedServiceProvider::class,
             SitemapServiceProvider::class,
-        ]);
+            // stancy
+            StancyServiceProvider::class,
+        ];
     }
 
     protected function getEnvironmentSetUp($app): void

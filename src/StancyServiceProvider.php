@@ -22,6 +22,7 @@ class StancyServiceProvider extends ServiceProvider implements DeferrableProvide
         $this->registerSitemap();
     }
 
+    /** @codeCoverageIgnore */
     public function provides(): array
     {
         return [
