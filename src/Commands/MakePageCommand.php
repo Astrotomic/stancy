@@ -27,13 +27,13 @@ class MakePageCommand extends GeneratorCommand
         $name = $this->getNameInput();
         $collection = $this->option('collection');
 
-        if (!$collection) {
+        if (! $collection) {
             return;
         }
 
         $repository = Sheets::collection($collection);
 
-        if (!$repository instanceof FilesystemRepository) {
+        if (! $repository instanceof FilesystemRepository) {
             $this->warn('can not create a sheet if collection is not instance of `'.FilesystemRepository::class.'`');
 
             return;
@@ -55,7 +55,7 @@ class MakePageCommand extends GeneratorCommand
 
     protected function getDefaultSheetContent(string $extension): string
     {
-        if (!in_array($extension, ['md', 'json', 'yaml', 'yml'])) {
+        if (! in_array($extension, ['md', 'json', 'yaml', 'yml'])) {
             return '';
         }
 
