@@ -202,14 +202,15 @@ final class PageTest extends TestCase
     public function it_is_macroable()
     {
         $called = false;
-        $callback = function () use (&$called) {
-            $called = true;
-        };
 
-        Page::macro('testMacro', $callback);
-        Page::testMacro();
+        Page::macro('testMacro', function () use (&$called) {
+            $called = true;
+
+            return $called;
+        });
 
         static::assertTrue(Page::hasMacro('testMacro'));
+        static::assertTrue(Page::testMacro());
         static::assertTrue($called);
     }
 }
