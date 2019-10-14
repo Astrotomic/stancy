@@ -197,4 +197,19 @@ final class PageTest extends TestCase
         static::assertInstanceOf(FeedItem::class, $feedItem);
         $feedItem->validate();
     }
+
+    /** @test */
+    public function it_is_macroable()
+    {
+        $called = false;
+        $callback = function () use (&$called) {
+            $called = true;
+        };
+
+        Page::macro('testMacro', $callback);
+        Page::testMacro();
+
+        static::assertTrue(Page::hasMacro('testMacro'));
+        static::assertTrue($called);
+    }
 }
