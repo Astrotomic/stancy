@@ -8,5 +8,5 @@
 
 **You search for a CMS that only extends your loved Laravel/Lumen framework? Here it is.**
 
-This package aims to provide the most common and not limiting CMS features. You can still use the frontend/template engine of your choice, use the scheduler/queue and receive POST requests.
+This package aims to provide the most common (and flexible) CMS features to your Laravel/Lumen project. You can still use the frontend/template engine of your choice, use the scheduler/queue and receive POST requests.
 
