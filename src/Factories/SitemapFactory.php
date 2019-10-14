@@ -5,6 +5,7 @@ namespace Astrotomic\Stancy\Factories;
 use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
 use Astrotomic\Stancy\Contracts\SitemapFactory as SitemapFactoryContract;
+use Astrotomic\Stancy\Traits\ConvertsSheetToPage;
 use Illuminate\Support\Str;
 use Spatie\Sheets\Facades\Sheets;
 use Spatie\Sheets\Sheet;
@@ -12,8 +13,7 @@ use Spatie\Sitemap\Sitemap;
 
 class SitemapFactory implements SitemapFactoryContract
 {
-    /** @var PageFactoryContract */
-    protected $pageFactory;
+    use ConvertsSheetToPage;
 
     public function __construct(PageFactoryContract $pageFactory)
     {
@@ -63,22 +63,5 @@ class SitemapFactory implements SitemapFactoryContract
         }
 
         return $sitemap;
-    }
-
-    /**
-     * @param Sheet[] $sheets
-     *
-     * @return PageContract[]
-     */
-    protected function sheetsToPages(array $sheets): array
-    {
-        return array_map(function (Sheet $sheet): PageContract {
-            return $this->sheetToPage($sheet);
-        }, $sheets);
-    }
-
-    protected function sheetToPage(Sheet $sheet): PageContract
-    {
-        return $this->pageFactory->makeFromSheet($sheet);
     }
 }

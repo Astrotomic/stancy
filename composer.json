@@ -43,9 +43,10 @@
                 "Astrotomic\\Stancy\\StancyServiceProvider"
             ],
             "aliases": {
+                "ExportFactory": "Astrotomic\\Stancy\\Facades\\ExportFactory",
                 "FeedFactory": "Astrotomic\\Stancy\\Facades\\FeedFactory",
-                "SitemapFactory": "Astrotomic\\Stancy\\Facades\\SitemapFactory",
-                "PageFactory": "Astrotomic\\Stancy\\Facades\\PageFactory"
+                "PageFactory": "Astrotomic\\Stancy\\Facades\\PageFactory",
+                "SitemapFactory": "Astrotomic\\Stancy\\Facades\\SitemapFactory"
             }
         }
     },
