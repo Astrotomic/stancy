@@ -17,3 +17,9 @@
 * [Sitemap](advanced/sitemap.md)
 * [🚧 static export](advanced/static-export.md)
 
+## Integrations
+
+* [🚧 nginx](integrations/nginx.md)
+* [🚧 netlify](integrations/netlify.md)
+* [🚧 sitesauce](integrations/sitesauce.md)
+
