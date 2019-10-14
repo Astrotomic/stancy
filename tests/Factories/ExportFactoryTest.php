@@ -43,6 +43,7 @@ final class ExportFactoryTest extends TestCase
 
         $this->app->make(Exporter::class)->export();
 
+        // https://github.com/spatie/laravel-export/issues/6
         $filePath = __DIR__.'/../export/feed/blog.atom/index.html';
 
         static::assertFileExists($filePath);
