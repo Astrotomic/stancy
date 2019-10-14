@@ -1,6 +1,6 @@
 # Introduction
 
-![Stancy](.gitbook/assets/banner.png)
+![Stancy](.gitbook/assets/banner%20%282%29.png)
 
 [![TravisCI](https://img.shields.io/travis/Astrotomic/stancy/master?label=TravisCI&style=flat-square)](https://travis-ci.org/Astrotomic/stancy/branches) [![StyleCI](https://styleci.io/repos/210212315/shield)](https://styleci.io/repos/210212315) [![ScrutinizerCI](https://img.shields.io/scrutinizer/build/g/Astrotomic/stancy?label=ScrutinizerCI&style=flat-square)](https://scrutinizer-ci.com/g/Astrotomic/stancy) [![Quality\)](https://img.shields.io/scrutinizer/quality/g/Astrotomic/stancy?label=Quality&style=flat-square)](https://scrutinizer-ci.com/g/Astrotomic/stancy) [![Coveralls](https://img.shields.io/coveralls/github/Astrotomic/stancy?label=Coverage&style=flat-square)](https://coveralls.io/github/Astrotomic/stancy) [![Libraries.io](https://img.shields.io/librariesio/github/Astrotomic/stancy?label=Dependencies&style=flat-square)](https://libraries.io/packagist/astrotomic%2Fstancy)
 
@@ -8,5 +8,5 @@
 
 **You search for a CMS that only extends your loved Laravel/Lumen framework? Here it is.**
 
-This package aims to provide the most common (and flexible) CMS features to your Laravel/Lumen project. You can still use the frontend/template engine of your choice, use the scheduler/queue and receive POST requests.
+This package aims to provide the most common \(and flexible\) CMS features to your Laravel/Lumen project. You can still use the frontend/template engine of your choice, use the scheduler/queue and receive POST requests.
 

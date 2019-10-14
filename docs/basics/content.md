@@ -98,6 +98,6 @@ These markdown files with YAML frontmatter will generate the following array tha
 ```
 
 {% hint style="info" %}
-The example array does not respect the defined page data classes. Head to the next page to learn more about them and what you can do with them.
+This example array does not respect the defined page data classes. Head to the [PageData](pagedata.md) page to learn more about them and what you can do with them.
 {% endhint %}
 

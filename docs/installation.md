@@ -46,5 +46,3 @@ return [
 
 {% page-ref page="advanced/feed.md" %}
 
-
-
