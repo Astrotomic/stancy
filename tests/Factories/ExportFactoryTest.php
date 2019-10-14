@@ -43,7 +43,7 @@ final class ExportFactoryTest extends TestCase
 
         $this->app->make(Exporter::class)->export();
 
-        // https://github.com/spatie/laravel-export/issues/6
+        // ToDo: https://github.com/spatie/laravel-export/issues/6
         $filePath = __DIR__.'/../export/feed/blog.atom/index.html';
 
         static::assertFileExists($filePath);
@@ -64,7 +64,7 @@ final class ExportFactoryTest extends TestCase
         $filePath = __DIR__.'/../export/index.html';
 
         static::assertFileExists($filePath);
-        // https://github.com/spatie/phpunit-snapshot-assertions/pull/76
+        // ToDo: https://github.com/spatie/phpunit-snapshot-assertions/pull/76
         // static::assertMatchesHtmlSnapshot(file_get_contents($filePath));
         static::assertEquals('<h1>hello world</h1>', trim(file_get_contents($filePath)));
     }
@@ -84,12 +84,12 @@ final class ExportFactoryTest extends TestCase
         $filePath2 = __DIR__.'/../export/second-post/index.html';
 
         static::assertFileExists($filePath1);
-        // https://github.com/spatie/phpunit-snapshot-assertions/pull/76
+        // ToDo: https://github.com/spatie/phpunit-snapshot-assertions/pull/76
         // static::assertMatchesHtmlSnapshot(file_get_contents($filePath1));
         static::assertEquals('<h1>first post</h1>', trim(file_get_contents($filePath1)));
 
         static::assertFileExists($filePath2);
-        // https://github.com/spatie/phpunit-snapshot-assertions/pull/76
+        // ToDo: https://github.com/spatie/phpunit-snapshot-assertions/pull/76
         // static::assertMatchesHtmlSnapshot(file_get_contents($filePath2));
         static::assertEquals('<h1>second post</h1>', trim(file_get_contents($filePath2)));
     }
