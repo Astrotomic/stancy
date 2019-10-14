@@ -52,6 +52,7 @@ abstract class TestCase extends Orchestra
             'driver' => 'local',
             'root' => realpath(__DIR__.'/export'),
         ]);
+        @mkdir(realpath(__DIR__.'/export'));
 
         $app['config']->set('sheets.collections', [
             'content',
