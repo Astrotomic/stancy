@@ -8,6 +8,7 @@ use Astrotomic\Stancy\Facades\PageFactory;
 use Astrotomic\Stancy\Factories\ExportFactory;
 use Astrotomic\Stancy\Tests\TestCase;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Facades\Route;
 use Spatie\Export\Exporter;
 use Spatie\Snapshots\MatchesSnapshots;
@@ -92,5 +93,16 @@ final class ExportFactoryTest extends TestCase
         // ToDo: https://github.com/spatie/phpunit-snapshot-assertions/pull/76
         // static::assertMatchesHtmlSnapshot(file_get_contents($filePath2));
         static::assertEquals('<h1>second post</h1>', trim(file_get_contents($filePath2)));
+    }
+
+    /** @test */
+    public function it_thorws_exception_if_page_data_is_not_instance_of_routable(): void
+    {
+        static::expectException(Exception::class);
+        static::expectExceptionMessage('The page data has to be instance of Astrotomic\Stancy\Contracts\Routable to allow access to the URL.');
+
+        $this->getExportFactory()->addSheetList(['content:home']);
+
+        $this->app->make(Exporter::class)->export();
     }
 }
