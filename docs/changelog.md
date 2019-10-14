@@ -2,7 +2,13 @@
 
 All notable changes to this package will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.2.0...master)
+## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.3.0...master)
+
+## [v0.3.0](https://github.com/Astrotomic/stancy/releases/tag/0.3.0) - 2019-10-14
+
+### Added
+
+* `\Astrotomic\Stancy\Models\Page` uses `\Illuminate\Support\Traits\Macroable` to allow extensions
 
 ### Changed
 
@@ -27,5 +33,4 @@ All notable changes to this package will be documented in this file. The format 
 
 ### Added
 
-* First release - until \[v1.0.0\] kind of proof of concept
-
+* First release - until v1.0.0 kind of proof of concept
