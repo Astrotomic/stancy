@@ -53,7 +53,7 @@ final class ExportFactoryTest extends TestCase
     /** @test */
     public function it_can_export_pages(): void
     {
-        Route::get('/', function(): PageContract {
+        Route::get('/', function (): PageContract {
             return PageFactory::makeFromSheetName('content', 'yamlFrontMatterPredefined');
         });
 
@@ -72,7 +72,7 @@ final class ExportFactoryTest extends TestCase
     /** @test */
     public function it_can_export_a_collection(): void
     {
-        Route::get('/{slug}', function(string $slug): PageContract {
+        Route::get('/{slug}', function (string $slug): PageContract {
             return PageFactory::makeFromSheetName('blog', $slug);
         });
 

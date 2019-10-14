@@ -8,7 +8,6 @@ use Astrotomic\Stancy\Contracts\SitemapFactory as SitemapFactoryContract;
 use Astrotomic\Stancy\Traits\ConvertsSheetToPage;
 use Illuminate\Support\Str;
 use Spatie\Sheets\Facades\Sheets;
-use Spatie\Sheets\Sheet;
 use Spatie\Sitemap\Sitemap;
 
 class SitemapFactory implements SitemapFactoryContract

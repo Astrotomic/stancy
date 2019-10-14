@@ -2,9 +2,9 @@
 
 namespace Astrotomic\Stancy\Factories;
 
+use Astrotomic\Stancy\Contracts\ExportFactory as ExportFactoryContract;
 use Astrotomic\Stancy\Contracts\Page as PageContract;
 use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
-use Astrotomic\Stancy\Contracts\ExportFactory as ExportFactoryContract;
 use Astrotomic\Stancy\Traits\ConvertsSheetToPage;
 use Illuminate\Contracts\Routing\UrlGenerator as UrlGeneratorContract;
 use Illuminate\Support\Str;
@@ -55,7 +55,7 @@ class ExportFactory implements ExportFactoryContract
 
     public function addFeeds(array $except = []): void
     {
-        collect(config('feed.feeds'))->except($except)->each(function(array $config): void {
+        collect(config('feed.feeds'))->except($except)->each(function (array $config): void {
             $this->exporter->paths([$config['url']]);
         });
     }

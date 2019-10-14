@@ -2,10 +2,10 @@
 
 namespace Astrotomic\Stancy\Tests;
 
+use Astrotomic\Stancy\Contracts\ExportFactory as ExportFactoryContract;
 use Astrotomic\Stancy\Contracts\FeedFactory as FeedFactoryContract;
 use Astrotomic\Stancy\Contracts\PageFactory as PageFactoryContract;
 use Astrotomic\Stancy\Contracts\SitemapFactory as SitemapFactoryContract;
-use Astrotomic\Stancy\Contracts\ExportFactory as ExportFactoryContract;
 use Astrotomic\Stancy\StancyServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
