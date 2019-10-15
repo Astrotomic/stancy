@@ -4,6 +4,14 @@ All notable changes to this package will be documented in this file. The format 
 
 ## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.3.0...master)
 
+### Added
+
+* ExportFactory which integrates spatie/laravel-export
+    * `\Astrotomic\Stancy\Contracts\ExportFactory`
+    * `\Astrotomic\Stancy\Facades\ExportFactory`
+    * `\Astrotomic\Stancy\Factories\ExportFactory`
+* `\Astrotomic\Stancy\Models\Page::getUrl()` method which depends on `\Astrotomic\Stancy\Contracts\Routable` interface
+
 ## [v0.3.0](https://github.com/Astrotomic/stancy/releases/tag/0.3.0) - 2019-10-14
 
 ### Added
