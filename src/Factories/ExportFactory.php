@@ -33,7 +33,7 @@ class ExportFactory implements ExportFactoryContract
      *
      * @return void
      */
-    public function addSheetList(array $list): void
+    public function addSheetList(array $list): ExportFactoryContract
     {
         foreach ($list as $entry) {
             if (Str::contains($entry, ':')) {
@@ -46,18 +46,24 @@ class ExportFactory implements ExportFactoryContract
 
             $this->addPages($this->sheetsToPages(Sheets::collection($entry)->all()->all()));
         }
+
+        return $this;
     }
 
-    public function addSheetCollectionName(string $name): void
+    public function addSheetCollectionName(string $name): ExportFactoryContract
     {
         $this->addSheetList([$name]);
+
+        return $this;
     }
 
-    public function addFeeds(array $except = []): void
+    public function addFeeds(array $except = []): ExportFactoryContract
     {
         collect(config('feed.feeds'))->except($except)->each(function (array $config): void {
             $this->exporter->paths([$config['url']]);
         });
+
+        return $this;
     }
 
     /**

@@ -6,9 +6,9 @@ use Astrotomic\Stancy\Contracts\ExportFactory as ExportFactoryContract;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static void addSheetList(string[] $list)
- * @method static void addSheetCollectionName(string $name)
- * @method static void addFeeds(string[] $except = [])
+ * @method static ExportFactoryContract addSheetList(string[] $list)
+ * @method static ExportFactoryContract addSheetCollectionName(string $name)
+ * @method static ExportFactoryContract addFeeds(string[] $except = [])
  *
  * @see SitemapFactoryContract
  */
