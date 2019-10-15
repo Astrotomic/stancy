@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 use Spatie\Sitemap\Sitemap;
 
 /**
- * @method static Sitemap makeFromSheetList(array $list)
+ * @method static Sitemap makeFromSheetList(string[] $list)
  * @method static Sitemap makeFromSheetCollectionName(string $name)
  *
  * @see SitemapFactoryContract
