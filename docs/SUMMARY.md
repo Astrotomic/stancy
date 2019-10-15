@@ -17,9 +17,13 @@
 * [Sitemap](advanced/sitemap.md)
 * [🚧 static export](advanced/static-export.md)
 
-## Integrations
+## Webserver
 
-* [🚧 nginx](integrations/nginx.md)
-* [🚧 netlify](integrations/netlify.md)
-* [🚧 sitesauce](integrations/sitesauce.md)
+* [🚧 nginx](webserver/nginx.md)
+* [🚧 caddy](webserver/caddy.md)
+
+## Services
+
+* [🚧 netlify](services/netlify.md)
+* [🚧 sitesauce](services/sitesauce.md)
 

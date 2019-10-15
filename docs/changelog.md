@@ -34,3 +34,4 @@ All notable changes to this package will be documented in this file. The format 
 ### Added
 
 * First release - until v1.0.0 kind of proof of concept
+
