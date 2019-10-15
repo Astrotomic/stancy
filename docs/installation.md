@@ -46,3 +46,9 @@ return [
 
 {% page-ref page="advanced/feed.md" %}
 
+### spatie/laravel-export
+
+Stancy integrates [spatie/laravel-export](https://github.com/spatie/laravel-export) to generate static files. You can configure the exporter in the config file or use the `\Astrotomic\Stancy\Contracts\ExportFactory` to add your pages programmatically. We recommend to disable the `crawl` option in the `config/export.php` and use the export factory to add pages to your export list.
+
+{% page-ref page="advanced/static-export.md" %}
+

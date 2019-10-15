@@ -15,7 +15,7 @@
 
 * [Feed Atom/RSS](advanced/feed.md)
 * [Sitemap](advanced/sitemap.md)
-* [🚧 static export](advanced/static-export.md)
+* [static export](advanced/static-export.md)
 
 ## Webserver
 
