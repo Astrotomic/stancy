@@ -2,7 +2,9 @@
 
 All notable changes to this package will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.3.0...master)
+## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.4.0...master)
+
+## [v0.4.0](https://github.com/Astrotomic/stancy/releases/tag/0.4.0) - 2019-10-15
 
 ### Added
 
