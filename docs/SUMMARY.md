@@ -26,4 +26,5 @@
 
 * [🚧 netlify](services/netlify.md)
 * [🚧 sitesauce](services/sitesauce.md)
+* [🚧 forestry](services/forestry.md)
 
