@@ -14,6 +14,52 @@ composer require astrotomic/stancy
 
 Stancy uses [spatie/sheets](https://github.com/spatie/sheets) as base - a sheet is the data file which is used to fill a page. By default sheets can be Markdown \(with YAML frontmatter\), JSON or YAML files. But you can define your own [content parsers](https://github.com/spatie/sheets#content-parser). To use sheets you have to [create a collection](https://github.com/spatie/sheets#creating-your-first-collection) which is a folder that contains your sheets. You can define as much collections as you want.
 
+{% code-tabs %}
+{% code-tabs-item title="config/sheets.php" %}
+```php
+<?php
+
+use Spatie\Sheets\ContentParsers\JsonParser;
+
+return [
+    'default_collection' => 'static',
+
+    'collections' => [
+        'static',
+        'blog',
+        'data' => [
+            'content_parser' => JsonParser::class,
+            'extension' => 'json',
+        ],
+    ],
+];
+```
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="config/filesystems.php" %}
+```php
+<?php
+
+return [
+    'disks' => [
+        'static' => [
+            'driver' => 'local',
+            'root' => resource_path('content/static'),
+        ],
+        'blog' => [
+            'driver' => 'local',
+            'root' => resource_path('content/blog'),
+        ],
+        'data' => [
+            'driver' => 'local',
+            'root' => resource_path('content/data'),
+        ],
+    ],
+];
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
 {% page-ref page="basics/content.md" %}
 
 ### spatie/laravel-feeds

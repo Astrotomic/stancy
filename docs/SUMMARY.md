@@ -4,6 +4,7 @@
 * [Issues](issues.md)
 * [Changelog](changelog.md)
 * [Installation](installation.md)
+* [Getting started](getting-started.md)
 
 ## Basics
 
