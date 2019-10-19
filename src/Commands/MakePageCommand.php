@@ -3,17 +3,34 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Spatie\Sheets\Facades\Sheets;
 use Spatie\Sheets\Repositories\FilesystemRepository;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Yaml\Yaml;
+use Illuminate\Contracts\Config\Repository as ConfigContract;
+use Illuminate\Contracts\Filesystem\Factory as FilesystemManagerContract;
 
 class MakePageCommand extends GeneratorCommand
 {
     protected $name = 'make:page';
 
     protected $description = 'Create a new page for stancy package.';
+
+    /** @var ConfigContract */
+    protected $config;
+
+    /** @var FilesystemManagerContract */
+    protected $filesystemManager;
+
+    public function __construct(Filesystem $files, ConfigContract $config, FilesystemManagerContract $filesystemManager)
+    {
+        parent::__construct($files);
+
+        $this->config = $config;
+        $this->filesystemManager = $filesystemManager;
+    }
 
     public function handle()
     {
@@ -39,18 +56,22 @@ class MakePageCommand extends GeneratorCommand
             return;
         }
 
-        $filename = Str::kebab(class_basename($name)).'.'.$repository->getExtension();
+        $extension = $this->config->get('sheets.collections.'.$collection.'.extension', 'md');
+        $disk = $this->config->get('sheets.collections.'.$collection.'.disk', $collection);
+        $filesystem = $this->filesystemManager->disk($disk);
+
+        $filename = Str::kebab(class_basename($name)).'.'.$extension;
 
         if (
             (! $this->hasOption('force') || ! $this->option('force'))
-            && $repository->getFilesystem()->exists($filename)
+            && $filesystem->exists($filename)
         ) {
             $this->error('the sheet `'.$filename.'` already exists');
 
             return;
         }
 
-        $repository->getFilesystem()->put($filename, $this->getDefaultSheetContent($repository->getExtension()));
+        $filesystem->put($filename, $this->getDefaultSheetContent($extension));
     }
 
     protected function getDefaultSheetContent(string $extension): string
