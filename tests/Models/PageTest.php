@@ -30,7 +30,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_render_from_sheet(): void
     {
-        $page = $this->getPageFactory()->makeFromSheetName('content', 'home')->view('pages.home');
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'home')->view('pages.content');
 
         static::assertInstanceOf(Page::class, $page);
         static::assertInstanceOf(View::class, $page->render());
@@ -52,7 +52,7 @@ final class PageTest extends TestCase
     /** @test */
     public function it_can_render_from_sheet_with_validated_data(): void
     {
-        $page = $this->getPageFactory()->makeFromSheetName('content', 'home')->view('pages.home')->page(HomePageData::class);
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'home')->view('pages.content')->page(HomePageData::class);
 
         static::assertInstanceOf(Page::class, $page);
         static::assertInstanceOf(View::class, $page->render());
@@ -196,5 +196,21 @@ final class PageTest extends TestCase
 
         static::assertInstanceOf(FeedItem::class, $feedItem);
         $feedItem->validate();
+    }
+
+    /** @test */
+    public function it_is_macroable()
+    {
+        $called = false;
+
+        Page::macro('testMacro', function () use (&$called) {
+            $called = true;
+
+            return $called;
+        });
+
+        static::assertTrue(Page::hasMacro('testMacro'));
+        static::assertTrue(Page::testMacro());
+        static::assertTrue($called);
     }
 }

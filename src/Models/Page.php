@@ -3,10 +3,12 @@
 namespace Astrotomic\Stancy\Models;
 
 use Astrotomic\Stancy\Contracts\Page as PageContract;
+use Astrotomic\Stancy\Contracts\Routable;
 use Exception;
 use Illuminate\Contracts\View\Factory as ViewFactoryContract;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Traits\Macroable;
 use RuntimeException;
 use Spatie\Feed\FeedItem;
 use Spatie\Sheets\Facades\Sheets;
@@ -16,6 +18,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Page implements PageContract
 {
+    use Macroable;
+
     /** @var string|null */
     protected $view;
 
@@ -129,6 +133,15 @@ class Page implements PageContract
         }
 
         return $this->data->toSitemapItem();
+    }
+
+    public function getUrl(): string
+    {
+        if (! ($this->data instanceof Routable)) {
+            throw new Exception(sprintf('The page data has to be instance of %s to allow access to the URL.', Routable::class));
+        }
+
+        return $this->data->getUrl();
     }
 
     protected function parse(): void

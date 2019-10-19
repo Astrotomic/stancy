@@ -28,7 +28,7 @@ abstract class PageData extends DataTransferObject implements Arrayable, Feedabl
         throw new Exception(sprintf('You have to define the transformation to a valid %s yourself if you want to use a sitemap.', Tag::class));
     }
 
-    // https://github.com/spatie/data-transfer-object/issues/64
+    // ToDo: https://github.com/spatie/data-transfer-object/issues/64
     protected function parseArray(array $array): array
     {
         foreach ($array as $key => $value) {

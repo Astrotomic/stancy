@@ -3,3 +3,4 @@
 /.phpunit.result.cache
 /build/
 /phpunit.xml
+/tests/export/
