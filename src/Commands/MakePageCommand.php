@@ -3,14 +3,14 @@
 namespace Astrotomic\Stancy\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Contracts\Config\Repository as ConfigContract;
+use Illuminate\Contracts\Filesystem\Factory as FilesystemManagerContract;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Spatie\Sheets\Facades\Sheets;
 use Spatie\Sheets\Repositories\FilesystemRepository;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Yaml\Yaml;
-use Illuminate\Contracts\Config\Repository as ConfigContract;
-use Illuminate\Contracts\Filesystem\Factory as FilesystemManagerContract;
 
 class MakePageCommand extends GeneratorCommand
 {
