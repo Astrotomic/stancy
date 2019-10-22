@@ -10,7 +10,7 @@
 
 * [Content](basics/content.md)
 * [PageData](basics/pagedata.md)
-* [🚧 Make Command](basics/make-command.md)
+* [Make Page Command](basics/make-command.md)
 
 ## Advanced
 
