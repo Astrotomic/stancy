@@ -32,6 +32,13 @@ class MakePageCommand extends GeneratorCommand
         $this->filesystemManager = $filesystemManager;
     }
 
+    public function getOptions()
+    {
+        return [
+            ['collection', null, InputOption::VALUE_REQUIRED, 'The sheet collection to create the page in'],
+        ];
+    }
+
     public function handle()
     {
         $this->createSheet();
@@ -113,12 +120,5 @@ class MakePageCommand extends GeneratorCommand
     protected function replaceClass($stub, $name): string
     {
         return parent::replaceClass($stub, $name);
-    }
-
-    public function getOptions()
-    {
-        return [
-            ['collection', null, InputOption::VALUE_REQUIRED, 'The sheet collection to create the page in'],
-        ];
     }
 }
