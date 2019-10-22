@@ -1,5 +1,9 @@
 preset: laravel
 
+finder:
+  exclude:
+    - tests/*/__snapshots__
+
 enabled:
   - alpha_ordered_imports
 
