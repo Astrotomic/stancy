@@ -2,6 +2,7 @@
 
 namespace Astrotomic\Stancy;
 
+use Astrotomic\Stancy\Commands\MakePageCommand;
 use Astrotomic\Stancy\Contracts\ExportFactory as ExportFactoryContract;
 use Astrotomic\Stancy\Contracts\FeedFactory as FeedFactoryContract;
 use Astrotomic\Stancy\Contracts\Page as PageContract;
@@ -12,29 +13,23 @@ use Astrotomic\Stancy\Factories\FeedFactory;
 use Astrotomic\Stancy\Factories\PageFactory;
 use Astrotomic\Stancy\Factories\SitemapFactory;
 use Astrotomic\Stancy\Models\Page;
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class StancyServiceProvider extends ServiceProvider implements DeferrableProvider
+class StancyServiceProvider extends ServiceProvider
 {
+    public function boot(): void
+    {
+        $this->commands([
+            MakePageCommand::class,
+        ]);
+    }
+
     public function register(): void
     {
         $this->registerPage();
         $this->registerFeed();
         $this->registerSitemap();
         $this->registerExporter();
-    }
-
-    /** @codeCoverageIgnore */
-    public function provides(): array
-    {
-        return [
-            PageFactoryContract::class,
-            PageContract::class,
-            FeedFactoryContract::class,
-            ExportFactoryContract::class,
-            SitemapFactoryContract::class,
-        ];
     }
 
     protected function registerPage(): void

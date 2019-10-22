@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Astrotomic\Stancy\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
@@ -51,9 +51,9 @@ class MakePageCommand extends GeneratorCommand
         $repository = Sheets::collection($collection);
 
         if (! $repository instanceof FilesystemRepository) {
-            $this->warn('can not create a sheet if collection is not instance of `'.FilesystemRepository::class.'`');
+            $this->warn('can not create a sheet if collection is not instance of `'.FilesystemRepository::class.'`'); // @codeCoverageIgnore
 
-            return;
+            return; // @codeCoverageIgnore
         }
 
         $extension = $this->config->get('sheets.collections.'.$collection.'.extension', 'md');
@@ -84,7 +84,7 @@ class MakePageCommand extends GeneratorCommand
             '_pageData' => '\\'.$this->qualifyClass($this->getNameInput()),
         ];
 
-        if ($extension == 'json') {
+        if ($extension === 'json') {
             return json_encode($data);
         }
 
@@ -102,7 +102,7 @@ class MakePageCommand extends GeneratorCommand
 
     protected function getStub(): string
     {
-        return __DIR__.'/../../../../stancy/resources/stubs/page.stub';
+        return __DIR__.'/../../resources/stubs/page.stub';
     }
 
     protected function getDefaultNamespace($rootNamespace): string
