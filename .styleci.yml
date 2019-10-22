@@ -2,7 +2,7 @@ preset: laravel
 
 finder:
   exclude:
-    - tests/*/__snapshots__
+    - tests/Commands/__snapshots__
 
 enabled:
   - alpha_ordered_imports
