@@ -2,13 +2,23 @@
 
 All notable changes to this package will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.4.0...master)
+## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.5.0...master)
+
+## [v0.5.0](https://github.com/Astrotomic/stancy/releases/tag/0.5.0) - 2019-10-22
+
+### Added
+
+* `\Astrotomic\Stancy\Commands\MakePageCommand`
+
+### Changed
+
+* `\Astrotomic\Stancy\StancyServiceProvider` is not deferred anymore
 
 ## [v0.4.0](https://github.com/Astrotomic/stancy/releases/tag/0.4.0) - 2019-10-15
 
 ### Added
 
-* ExportFactory which integrates spatie/laravel-export
+* ExportFactory which integrates [spatie/laravel-export](https://github.com/spatie/laravel-export)
   * `\Astrotomic\Stancy\Contracts\ExportFactory`
   * `\Astrotomic\Stancy\Facades\ExportFactory`
   * `\Astrotomic\Stancy\Factories\ExportFactory`
