@@ -25,7 +25,8 @@
         "spatie/laravel-export": "^0.2",
         "spatie/laravel-feed": "^2.5",
         "spatie/laravel-sitemap": "^5.5",
-        "spatie/sheets": "^1.4"
+        "spatie/sheets": "^1.4",
+        "symfony/yaml": "^4.0"
     },
     "require-dev": {
         "nunomaduro/phpinsights": "dev-master",
