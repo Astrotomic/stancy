@@ -15,9 +15,9 @@
 [![Open Collective](https://img.shields.io/opencollective/all/astrotomic?label=Backers&style=flat-square)](https://opencollective.com/astrotomic)
 [![GitBook](https://img.shields.io/badge/GitBook-Stancy-E91E63.svg?style=flat-square)](https://docs.astrotomic.info/stancy)
 
-**You search for a CMS that only extends your loved Laravel/Lumen framework? Here it is.**
+**You search for a CMS that only extends your loved Laravel framework? Here it is.**
 
-This package aims to provide the most common (and flexible) CMS features to your Laravel/Lumen project. You can still use the frontend/template engine of your choice, use the scheduler/queue and receive POST requests.
+This package aims to provide the most common (and flexible) CMS features to your Laravel project. You can still use the frontend/template engine of your choice, use the scheduler/queue and receive POST requests.
 
 ## Installation
 
@@ -28,7 +28,6 @@ composer require astrotomic/stancy
 ## Demos
 
 * [astrotomic/stancy-laravel-demo](https://github.com/Astrotomic/stancy-laravel-demo)
-* [astrotomic/stancy-lumen-demo](https://github.com/Astrotomic/stancy-lumen-demo)
 
 ## Testing
 

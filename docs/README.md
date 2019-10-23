@@ -6,7 +6,7 @@
 
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/astrotomic/stancy?label=PHP&style=flat-square)](https://packagist.org/packages/astrotomic/stancy) [![MIT License](https://img.shields.io/github/license/Astrotomic/stancy.svg?label=License&color=blue&style=flat-square)](https://github.com/Astrotomic/stancy/blob/master/LICENSE.md) [![Latest Version](http://img.shields.io/packagist/v/astrotomic/stancy.svg?label=Release&style=flat-square)](https://packagist.org/packages/astrotomic/stancy) [![Total Downloads](https://img.shields.io/packagist/dt/astrotomic/stancy.svg?label=Downloads&style=flat-square)](https://packagist.org/packages/astrotomic/stancy) [![GitHub contributors](https://img.shields.io/github/contributors/Astrotomic/stancy?label=Contributors&style=flat-square)](https://github.com/Astrotomic/stancy/graphs/contributors) [![Open Collective](https://img.shields.io/opencollective/all/astrotomic?label=Backers&style=flat-square)](https://opencollective.com/astrotomic)
 
-**You search for a CMS that only extends your loved Laravel/Lumen framework? Here it is.**
+**You search for a CMS that only extends your loved Laravel framework? Here it is.**
 
-This package aims to provide the most common \(and flexible\) CMS features to your Laravel/Lumen project. You can still use the frontend/template engine of your choice, use the scheduler/queue and receive POST requests.
+This package aims to provide the most common \(and flexible\) CMS features to your Laravel project. You can still use the frontend/template engine of your choice, use the scheduler/queue and receive POST requests.
 
