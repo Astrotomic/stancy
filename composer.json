@@ -1,11 +1,12 @@
 {
     "name": "astrotomic/stancy",
     "type": "library",
-    "description": "",
+    "description": "This package aims to provide the most common and flexible CMS features to your Laravel project.",
     "keywords": [
         "laravel",
-        "lumen",
-        "illuminate"
+        "stancy",
+        "astrotomic",
+        "cms"
     ],
     "license": "MIT",
     "authors": [

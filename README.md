@@ -28,6 +28,7 @@ composer require astrotomic/stancy
 ## Demos
 
 * [astrotomic/stancy-laravel-demo](https://github.com/Astrotomic/stancy-laravel-demo)
+* [astrotomic/astrotomic.info](https://github.com/Astrotomic/astrotomic.info)
 
 ## Testing
 
