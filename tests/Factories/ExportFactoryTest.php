@@ -86,7 +86,7 @@ final class ExportFactoryTest extends TestCase
         static::assertMatchesHtmlSnapshot(file_get_contents($filePath1));
 
         static::assertFileExists($filePath2);
-         static::assertMatchesHtmlSnapshot(file_get_contents($filePath2));
+        static::assertMatchesHtmlSnapshot(file_get_contents($filePath2));
     }
 
     /** @test */
