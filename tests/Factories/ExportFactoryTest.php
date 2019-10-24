@@ -65,7 +65,7 @@ final class ExportFactoryTest extends TestCase
         $filePath = __DIR__.'/../export/index.html';
 
         static::assertFileExists($filePath);
-        static::assertMatchesHtmlSnapshot(file_get_contents($filePath));
+        static::assertMatchesFileSnapshot($filePath);
     }
 
     /** @test */
@@ -83,10 +83,10 @@ final class ExportFactoryTest extends TestCase
         $filePath2 = __DIR__.'/../export/second-post/index.html';
 
         static::assertFileExists($filePath1);
-        static::assertMatchesHtmlSnapshot(file_get_contents($filePath1));
+        static::assertMatchesFileSnapshot($filePath1);
 
         static::assertFileExists($filePath2);
-        static::assertMatchesHtmlSnapshot(file_get_contents($filePath2));
+        static::assertMatchesFileSnapshot($filePath2);
     }
 
     /** @test */

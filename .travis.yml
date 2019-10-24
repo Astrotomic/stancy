@@ -33,7 +33,6 @@ install:
   - travis_retry composer update ${COMPOSER_FLAGS} --prefer-dist --no-suggest --no-interaction
 
 script:
-  - php -r "echo PHP_EOL.PHP_EOL.phpversion('dom').PHP_EOL.PHP_EOL;"
   - vendor/bin/phpmd ./src/ text phpmd.xml
   - vendor/bin/phpinsights analyse ./ --format=console ${PHPINSIGHTS_FLAGS} --no-interaction --min-quality=95 --min-complexity=50 --min-architecture=100 --min-style=100 -v
   - vendor/bin/phpunit --coverage-text --coverage-clover=build/clover.xml
