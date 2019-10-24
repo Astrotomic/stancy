@@ -23,6 +23,7 @@ matrix:
     - php: 7.4snapshot
 
 before_install:
+  - php -r "echo phpversion('dom');"
   - composer config discard-changes true
   - travis_retry composer self-update
   - travis_retry composer require --dev "laravel/framework:${LARAVEL}" --no-interaction --no-update
