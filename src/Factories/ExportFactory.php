@@ -73,6 +73,7 @@ class ExportFactory implements ExportFactoryContract
      */
     protected function addPages(array $pages): void
     {
+        // todo: https://github.com/spatie/laravel-export/pull/31
         foreach ($pages as $page) {
             $this->exporter->paths([Str::replaceFirst($this->urlGenerator->to('/'), '', $page->getUrl())]);
         }
