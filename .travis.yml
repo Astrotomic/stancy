@@ -23,7 +23,6 @@ matrix:
     - php: 7.4snapshot
 
 before_install:
-  - php -r "echo phpversion('dom');"
   - composer config discard-changes true
   - travis_retry composer self-update
   - travis_retry composer require --dev "laravel/framework:${LARAVEL}" --no-interaction --no-update
@@ -34,6 +33,7 @@ install:
   - travis_retry composer update ${COMPOSER_FLAGS} --prefer-dist --no-suggest --no-interaction
 
 script:
+  - php -r "echo phpversion('dom');"
   - vendor/bin/phpmd ./src/ text phpmd.xml
   - vendor/bin/phpinsights analyse ./ --format=console ${PHPINSIGHTS_FLAGS} --no-interaction --min-quality=95 --min-complexity=50 --min-architecture=100 --min-style=100 -v
   - vendor/bin/phpunit --coverage-text --coverage-clover=build/clover.xml
