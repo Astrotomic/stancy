@@ -39,3 +39,6 @@ script:
 
 after_script:
   - vendor/bin/php-coveralls
+
+notifications:
+  slack: astrotomic:${SLACK_TOKEN}
