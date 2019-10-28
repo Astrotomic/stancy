@@ -25,6 +25,7 @@
 
 ## Services
 
+* [🚧 github actions](services/github-actions.md)
 * [🚧 github pages](services/github-pages.md)
 * [🚧 netlify](services/netlify.md)
 * [🚧 sitesauce](services/sitesauce.md)
