@@ -31,7 +31,7 @@ class ExportFactory implements ExportFactoryContract
     /**
      * @param string[] $list
      *
-     * @return void
+     * @return ExportFactoryContract
      */
     public function addSheetList(array $list): ExportFactoryContract
     {
@@ -60,7 +60,7 @@ class ExportFactory implements ExportFactoryContract
     public function addFeeds(array $except = []): ExportFactoryContract
     {
         collect(config('feed.feeds'))->except($except)->each(function (array $config): void {
-            $this->exporter->paths([$config['url']]);
+            $this->exporter->paths($config['url']);
         });
 
         return $this;
@@ -73,9 +73,8 @@ class ExportFactory implements ExportFactoryContract
      */
     protected function addPages(array $pages): void
     {
-        // todo: https://github.com/spatie/laravel-export/pull/31
-        foreach ($pages as $page) {
-            $this->exporter->paths([Str::replaceFirst($this->urlGenerator->to('/'), '', $page->getUrl())]);
-        }
+        $this->exporter->urls(array_map(function(PageContract $page): string {
+            return $page->getUrl();
+        }, $pages));
     }
 }

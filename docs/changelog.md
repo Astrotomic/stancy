@@ -2,7 +2,13 @@
 
 All notable changes to this package will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.5.0...master)
+## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.5.1...master)
+
+## [v0.5.1](https://github.com/Astrotomic/stancy/releases/tag/0.5.1) - 2019-10-29
+
+### Changed
+
+* [spatie/laravel-export:^0.2.2](https://github.com/spatie/laravel-export/releases/tag/0.2.2) is now used which fixes the export path of static files with an extension - like `sitemap.xml`
 
 ## [v0.5.0](https://github.com/Astrotomic/stancy/releases/tag/0.5.0) - 2019-10-22
 
