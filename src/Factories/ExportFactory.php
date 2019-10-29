@@ -73,7 +73,7 @@ class ExportFactory implements ExportFactoryContract
      */
     protected function addPages(array $pages): void
     {
-        $this->exporter->urls(array_map(function(PageContract $page): string {
+        $this->exporter->urls(array_map(function (PageContract $page): string {
             return $page->getUrl();
         }, $pages));
     }
