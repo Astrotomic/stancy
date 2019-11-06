@@ -3,9 +3,3 @@ preset: laravel
 finder:
   exclude:
     - tests/Commands/__snapshots__
-
-enabled:
-  - alpha_ordered_imports
-
-disabled:
-  - length_ordered_imports
