@@ -4,6 +4,11 @@ All notable changes to this package will be documented in this file. The format 
 
 ## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.5.1...master)
 
+### Changed
+
+* [spatie/laravel-feed:^2.6](https://github.com/spatie/laravel-feed/releases/tag/2.6.0) is now used which changed the `\Spatie\Feed\Feed` class signature
+* `\Astrotomic\Stancy\Contracts\FeedFactory::makeFromSheetCollectionName()` return type changed from `array` to `\Illuminate\Support\Collection` 
+
 ## [v0.5.1](https://github.com/Astrotomic/stancy/releases/tag/0.5.1) - 2019-10-29
 
 ### Changed

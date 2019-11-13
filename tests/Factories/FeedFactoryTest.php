@@ -37,8 +37,8 @@ final class FeedFactoryTest extends TestCase
 
         $feed = new Feed(
             'test blog feed',
+            $this->app->call(FeedFactoryContract::class.'@makeFromSheetCollectionName', ['blog']),
             $request->getUri(),
-            [FeedFactoryContract::class.'@makeFromSheetCollectionName', 'blog'],
             'feed::feed',
             '',
             ''
