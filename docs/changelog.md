@@ -6,7 +6,7 @@ All notable changes to this package will be documented in this file. The format 
 
 ## Added
 
-* Access page data as property on page class via `__get()`
+* `\Astrotomic\Stancy\Models\Page::__get()` method to access `\Astrotomic\Stancy\Models\PageData` properties
 
 ### Changed
 
