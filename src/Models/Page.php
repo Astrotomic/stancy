@@ -46,6 +46,11 @@ class Page implements PageContract
         $this->page($page);
     }
 
+    public function __get($name)
+    {
+        return data_get($this->data, $name);
+    }
+
     public function page(?string $page): PageContract
     {
         if (is_string($page)) {

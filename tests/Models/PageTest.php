@@ -91,6 +91,24 @@ final class PageTest extends TestCase
     }
 
     /** @test */
+    public function it_can_access_data_via_properties_from_page_data_class(): void
+    {
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'home')->page(HomePageData::class);
+
+        static::assertEquals(new HtmlString("<h1>hello world</h1>\n"), $page->contents);
+        static::assertEquals('home', $page->slug);
+    }
+
+    /** @test */
+    public function it_can_access_data_via_properties_from_page_data_array(): void
+    {
+        $page = $this->getPageFactory()->makeFromSheetName('content', 'home');
+
+        static::assertEquals(new HtmlString("<h1>hello world</h1>\n"), $page->contents);
+        static::assertEquals('home', $page->slug);
+    }
+
+    /** @test */
     public function it_can_load_child_sheets(): void
     {
         $page = $this->getPageFactory()->makeFromSheetName('content', 'blog');

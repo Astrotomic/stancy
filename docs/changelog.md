@@ -4,6 +4,10 @@ All notable changes to this package will be documented in this file. The format 
 
 ## [Unreleased](https://github.com/Astrotomic/stancy/compare/0.5.1...master)
 
+## Added
+
+* Access page data as property on page class via `__get()`
+
 ### Changed
 
 * [spatie/laravel-feed:^2.6](https://github.com/spatie/laravel-feed/releases/tag/2.6.0) is now used which changed the `\Spatie\Feed\Feed` class signature

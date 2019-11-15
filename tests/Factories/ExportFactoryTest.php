@@ -89,7 +89,7 @@ final class ExportFactoryTest extends TestCase
     }
 
     /** @test */
-    public function it_thorws_exception_if_page_data_is_not_instance_of_routable(): void
+    public function it_throws_exception_if_page_data_is_not_instance_of_routable(): void
     {
         static::expectException(Exception::class);
         static::expectExceptionMessage('The page data has to be instance of Astrotomic\Stancy\Contracts\Routable to allow access to the URL.');
