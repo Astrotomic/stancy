@@ -8,6 +8,7 @@ All notable changes to this package will be documented in this file. The format 
 
 * [spatie/laravel-feed:^2.6](https://github.com/spatie/laravel-feed/releases/tag/2.6.0) is now used which changed the `\Spatie\Feed\Feed` class signature
 * `\Astrotomic\Stancy\Contracts\FeedFactory::makeFromSheetCollectionName()` return type changed from `array` to `\Illuminate\Support\Collection` 
+* `\Astrotomic\Stancy\Traits\PageHasOrder::$order` allows `float` now
 
 ## [v0.5.1](https://github.com/Astrotomic/stancy/releases/tag/0.5.1) - 2019-10-29
 
