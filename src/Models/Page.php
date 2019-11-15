@@ -48,11 +48,7 @@ class Page implements PageContract
 
     public function __get($name)
     {
-        if (! isset($this->data->$name)) {
-            throw new RuntimeException(sprintf('The property [%s] does not exist on %s with %s page data.', $name, static::class, get_class($this->data)));
-        }
-
-        return $this->data->$name;
+        return data_get($this->data, $name);
     }
 
     public function page(?string $page): PageContract
