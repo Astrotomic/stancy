@@ -9,6 +9,9 @@ use Spatie\Sheets\PathParsers\SlugWithOrderParser;
  */
 trait PageHasOrder
 {
-    /** @var int @see SlugWithOrderParser */
+    /**
+     * @var int|float
+     * @see SlugWithOrderParser
+     */
     public $order;
 }
