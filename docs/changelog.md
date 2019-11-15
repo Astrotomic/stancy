@@ -6,7 +6,7 @@ All notable changes to this package will be documented in this file. The format 
 
 ## [v0.6.0](https://github.com/Astrotomic/stancy/releases/tag/0.6.0) - 2019-11-15
 
-## Added
+### Added
 
 * `\Astrotomic\Stancy\Models\Page::__get()` method to access `\Astrotomic\Stancy\Models\PageData` properties
 
