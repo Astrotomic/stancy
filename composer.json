@@ -30,7 +30,7 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
-        "mockery/mockery": "^1.2.3",
+        "mockery/mockery": "^1.2.4",
         "nunomaduro/phpinsights": "dev-master",
         "orchestra/testbench": "^4.0",
         "phpmd/phpmd": "^2.7",
