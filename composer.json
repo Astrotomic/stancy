@@ -31,7 +31,7 @@
     },
     "require-dev": {
         "mockery/mockery": "^1.2.3",
-        "nunomaduro/phpinsights": "dev-master",
+        "nunomaduro/phpinsights": "^1.10",
         "orchestra/testbench": "^4.0",
         "phpmd/phpmd": "^2.7",
         "phpunit/phpunit": "^8.3",
