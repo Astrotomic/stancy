@@ -33,7 +33,7 @@
         "mockery/mockery": "^1.2.3",
         "nunomaduro/phpinsights": "^1.10",
         "orchestra/testbench": "^4.0",
-        "phpmd/phpmd": "^2.7",
+        "phpmd/phpmd": "^2.8",
         "phpunit/phpunit": "^8.3",
         "spatie/phpunit-snapshot-assertions": "^2.2"
     },
