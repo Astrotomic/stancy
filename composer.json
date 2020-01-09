@@ -22,7 +22,7 @@
         "ext-json": "*",
         "facade/ignition-contracts": "^1.0",
         "illuminate/support": "^6.0",
-        "spatie/data-transfer-object": "^1.9.1",
+        "spatie/data-transfer-object": "^1.13.2",
         "spatie/laravel-export": "^0.2.2",
         "spatie/laravel-feed": "^2.6",
         "spatie/laravel-sitemap": "^5.5",
