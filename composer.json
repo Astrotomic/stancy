@@ -79,7 +79,7 @@
         ]
     },
     "support": {
-    "email": "dev@astrotomic.info",
+        "email": "dev@astrotomic.info",
         "issues": "https://github.com/Astrotomic/stancy/issues",
         "source": "https://github.com/Astrotomic/stancy",
         "docs": "https://docs.astrotomic.info/stancy"
