@@ -8,16 +8,16 @@
         "astrotomic",
         "cms"
     ],
-  "homepage": "https://astrotomic.info",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Tom Witkowski",
-      "email": "gummibeer@astrotomic.info",
-      "homepage": "https://gummibeer.de",
-      "role": "Developer"
-    }
-  ],
+    "homepage": "https://astrotomic.info",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Witkowski",
+            "email": "gummibeer@astrotomic.info",
+            "homepage": "https://gummibeer.de",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^7.2",
         "ext-json": "*",
