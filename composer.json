@@ -8,15 +8,16 @@
         "astrotomic",
         "cms"
     ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Tom Witkowski",
-            "email": "dev.gummibeer@gmail.com",
-            "homepage": "https://gummibeer.de",
-            "role": "Developer"
-        }
-    ],
+  "homepage": "https://astrotomic.info",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tom Witkowski",
+      "email": "gummibeer@astrotomic.info",
+      "homepage": "https://gummibeer.de",
+      "role": "Developer"
+    }
+  ],
     "require": {
         "php": "^7.2",
         "ext-json": "*",
@@ -78,6 +79,7 @@
         ]
     },
     "support": {
+    "email": "dev@astrotomic.info",
         "issues": "https://github.com/Astrotomic/stancy/issues",
         "source": "https://github.com/Astrotomic/stancy",
         "docs": "https://docs.astrotomic.info/stancy"
