@@ -27,7 +27,7 @@
         "spatie/laravel-export": "^0.2.2",
         "spatie/laravel-feed": "^2.6",
         "spatie/laravel-sitemap": "^5.5",
-        "spatie/sheets": "^1.4",
+        "spatie/sheets": "^1.5",
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
