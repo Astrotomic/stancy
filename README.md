@@ -1,3 +1,5 @@
+
+
 ![Stancy](docs/.gitbook/assets/banner.png)
 
 [![Latest Version](http://img.shields.io/packagist/v/astrotomic/stancy.svg?label=Release&style=for-the-badge)](https://packagist.org/packages/astrotomic/stancy)
@@ -65,9 +67,7 @@ Please see [SECURITY](SECURITY.md) for details.
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
-
-## Treeware
+The MIT License (MIT). Please see [License File](LICENSE) for more information.## Treeware
 
 You're free to use this package, but if it makes it to your production environment I would highly appreciate you buying the world a tree.
 
