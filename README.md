@@ -29,11 +29,11 @@ composer require astrotomic/stancy
 
 ## Demos
 
-* [astrotomic/stancy-laravel-demo](https://github.com/Astrotomic/stancy-laravel-demo)
-* [astrotomic/astrotomic.info](https://github.com/Astrotomic/astrotomic.info)
-* [gummibeer/studiopolster.de](https://github.com/Gummibeer/studiopolster.de)
-* [gummibeer/janine-pantzek.de](https://github.com/Gummibeer/janine-pantzek.de)
-* [gummibeer/moinhund.hamburg](https://github.com/Gummibeer/moinhund.hamburg)
+- [astrotomic/stancy-laravel-demo](https://github.com/Astrotomic/stancy-laravel-demo)
+- [astrotomic/astrotomic.info](https://github.com/Astrotomic/astrotomic.info)
+- [gummibeer/studiopolster.de](https://github.com/Gummibeer/studiopolster.de)
+- [gummibeer/janine-pantzek.de](https://github.com/Gummibeer/janine-pantzek.de)
+- [gummibeer/moinhund.hamburg](https://github.com/Gummibeer/moinhund.hamburg)
 
 ## Testing
 
