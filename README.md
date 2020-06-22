@@ -1,5 +1,3 @@
-
-
 ![Stancy](docs/.gitbook/assets/banner.png)
 
 [![Latest Version](http://img.shields.io/packagist/v/astrotomic/stancy.svg?label=Release&style=for-the-badge)](https://packagist.org/packages/astrotomic/stancy)
