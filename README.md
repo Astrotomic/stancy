@@ -53,13 +53,9 @@ This package follows [semantic versioning](https://semver.org/). Except the `0.x
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.### Security
 
-### Security
-
-Please see [SECURITY](SECURITY.md) for details.
-
-## Credits
+If you discover any security related issues, please check [SECURITY](https://github.com/Astrotomic/.github/blob/master/SECURITY.md) for steps to report it.## Credits
 
 - [Tom Witkowski](https://github.com/Gummibeer)
 - [Spatie](https://github.com/spatie)
