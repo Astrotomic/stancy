@@ -12,6 +12,7 @@ mkdir -p ./app/Pages
 
 {% code-tabs %}
 {% code-tabs-item title="config/filesystems.php" %}
+
 ```php
 <?php
 
@@ -26,9 +27,11 @@ return [
     ],
 ];
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="config/sheets.php" %}
+
 ```php
 <?php
 
@@ -40,10 +43,11 @@ return [
     ],
 ];
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-This is everything you have to do to prepare your first `static` sheet/page collection. 
+This is everything you have to do to prepare your first `static` sheet/page collection.
 
 {% page-ref page="installation.md" %}
 
@@ -57,23 +61,25 @@ touch ./views/content/home.blade.php
 touch ./app/Pages/Home.php
 ```
 
-These three files will represent your `home` page. The markdown file will hold the data/content, the view will render it and the PHP class will  validate it and provide additional features.
+These three files will represent your `home` page. The markdown file will hold the data/content, the view will render it and the PHP class will validate it and provide additional features.
 
 {% code-tabs %}
 {% code-tabs-item title="home.md" %}
+
 ```yaml
 ---
 _view: content.static.home
 _pageData: \App\Pages\Home
 ---
-
 # Home
 
 This is my first awesome Stancy page.
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="Home.php" %}
+
 ```php
 <?php
 
@@ -95,9 +101,11 @@ class Home extends PageData implements Routable
     }
 }
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="home.blade.php" %}
+
 ```markup
 @extends('master')
 
@@ -105,13 +113,15 @@ class Home extends PageData implements Routable
     {!! $contents !!}
 @endsection
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Now you have to add the route to your `routes/web.php` 
+Now you have to add the route to your `routes/web.php`
 
 {% code-tabs %}
 {% code-tabs-item title="routes/web.php" %}
+
 ```php
 <?php
 
@@ -122,6 +132,7 @@ Route::get('/', function () {
     return PageFactory::makeFromSheetName('static', 'home');
 })->name('static.home');
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
@@ -133,6 +144,7 @@ To add your page to the sitemap and return it if someone access `/sitemap.xml` y
 
 {% code-tabs %}
 {% code-tabs-item title="routes/web.php" %}
+
 ```php
 <?php
 
@@ -143,6 +155,7 @@ Route::get('/sitemap.xml', function () {
     return SitemapFactory::makeFromSheetList(['static']);
 })->name('sitemap');
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
@@ -162,6 +175,7 @@ touch ./app/Pages/Blog.php
 
 {% code-tabs %}
 {% code-tabs-item title="blog.md" %}
+
 ```yaml
 ---
 _view: static.blog
@@ -169,14 +183,15 @@ _pageData: \App\Pages\Blog
 _sheets:
     posts: blog:*
 ---
-
 # Blog
 
 This is my fantastic blog index.
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="Blog.php" %}
+
 ```php
 <?php
 
@@ -201,9 +216,11 @@ class Blog extends PageData implements Routable
     }
 }
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="blog.blade.php" %}
+
 ```markup
 @extends('master')
 
@@ -225,6 +242,7 @@ class Blog extends PageData implements Routable
     </div>
 @endsection
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
@@ -236,6 +254,7 @@ mkdir -p ./resources/content/blog
 
 {% code-tabs %}
 {% code-tabs-item title="config/filesystems.php" %}
+
 ```php
 <?php
 
@@ -250,9 +269,11 @@ return [
     ],
 ];
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="config/sheets.php" %}
+
 ```php
 <?php
 
@@ -265,6 +286,7 @@ return [
     ],
 ];
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
@@ -276,6 +298,7 @@ touch ./app/Pages/Post.php
 
 {% code-tabs %}
 {% code-tabs-item title="first-post.md" %}
+
 ```yaml
 ---
 _view: blog.post
@@ -284,14 +307,15 @@ title: my first post
 image: https://via.placeholder.com/1920x1080/E91E63/FFFFFF?text=Stancy
 date: 2019-09-04 17:31
 ---
-
 Add you viewing ten equally believe put. Separate families my on drawings do oh offended strictly elegance. Perceive jointure be mistress by jennings properly. An admiration at he discovered difficulty continuing. We in building removing possible suitable friendly on. Nay middleton him admitting consulted and behaviour son household. Recurred advanced he oh together entrance speedily suitable. Ready tried gay state fat could boy its among shall.
 
 Both rest of know draw fond post as. It agreement defective to excellent. Feebly do engage of narrow. Extensive repulsive belonging depending if promotion be zealously as. Preference inquietude ask now are dispatched led appearance. Small meant in so doubt hopes. Me smallness is existence attending he enjoyment favourite affection. Delivered is to ye belonging enjoyment preferred. Astonished and acceptance men two discretion. Law education recommend did objection how old.
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="Post.php" %}
+
 ```php
 <?php
 
@@ -330,9 +354,11 @@ class Post extends PageData implements Routable
     }
 }
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="post.blade.php" %}
+
 ```markup
 @extends('master')
 
@@ -342,11 +368,13 @@ class Post extends PageData implements Routable
     {!! $contents !!}
 @endsection
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
 {% code-tabs %}
 {% code-tabs-item title="routes/web.php" %}
+
 ```php
 <?php
 
@@ -359,11 +387,12 @@ Route::get('/blog/{slug}', function (string $slug) {
 
 Route::get('/sitemap.xml', function () {
     return SitemapFactory::makeFromSheetList([
-        'static', 
+        'static',
         'blog', // added
     ]);
 });
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
@@ -379,6 +408,7 @@ php artisan vendor:publish --provider="Spatie\Feed\FeedServiceProvider" --tag=co
 
 {% code-tabs %}
 {% code-tabs-item title="config/feed.php" %}
+
 ```php
 <?php
 
@@ -407,9 +437,11 @@ return [
     ],
 ];
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="routes/web.php" %}
+
 ```php
 <?php
 
@@ -417,9 +449,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::feeds();
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="master.blade.php" %}
+
 ```markup
 <!DOCTYPE html>
 <html>
@@ -432,6 +466,7 @@ Route::feeds();
 </body>
 </html>
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
@@ -439,6 +474,7 @@ Now you have to prepare the `\App\Pages\Post` page data class.
 
 {% code-tabs %}
 {% code-tabs-item title="Post.php" %}
+
 ```php
 <?php
 
@@ -452,7 +488,7 @@ use Spatie\Feed\FeedItem;
 class Post extends PageData implements Routable
 {
     // ...
-    
+
     public function toFeedItem(): FeedItem
     {
         return FeedItem::create()
@@ -467,6 +503,7 @@ class Post extends PageData implements Routable
     // ...
 }
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
@@ -475,4 +512,3 @@ And you are done. You will have two feeds \(RSS and Atom\) now. If you only want
 {% page-ref page="advanced/feed.md" %}
 
 **Congratulations!** 🎉 You have your first Stancy setup and are ready to go. 🚀
-

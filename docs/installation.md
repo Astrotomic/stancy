@@ -16,6 +16,7 @@ Stancy uses [spatie/sheets](https://github.com/spatie/sheets) as base - a sheet 
 
 {% code-tabs %}
 {% code-tabs-item title="config/sheets.php" %}
+
 ```php
 <?php
 
@@ -34,9 +35,11 @@ return [
     ],
 ];
 ```
+
 {% endcode-tabs-item %}
 
 {% code-tabs-item title="config/filesystems.php" %}
+
 ```php
 <?php
 
@@ -57,6 +60,7 @@ return [
     ],
 ];
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
@@ -68,6 +72,7 @@ Stancy comes with feed \(Atom & RSS\) support which is provided by [spatie/larav
 
 {% code-tabs %}
 {% code-tabs-item title="config/feed.php" %}
+
 ```php
 <?php
 
@@ -87,6 +92,7 @@ return [
     ],
 ];
 ```
+
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
@@ -97,4 +103,3 @@ return [
 Stancy integrates [spatie/laravel-export](https://github.com/spatie/laravel-export) to generate static files. You can configure the exporter in the config file or use the `\Astrotomic\Stancy\Contracts\ExportFactory` to add your pages programmatically. We recommend to disable the `crawl` option in the `config/export.php` and use the export factory to add pages to your export list.
 
 {% page-ref page="advanced/static-export.md" %}
-
