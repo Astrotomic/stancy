@@ -3,6 +3,7 @@
 [![Latest Version](http://img.shields.io/packagist/v/astrotomic/stancy.svg?label=Release&style=for-the-badge)](https://packagist.org/packages/astrotomic/stancy)
 [![MIT License](https://img.shields.io/github/license/Astrotomic/stancy.svg?label=License&color=blue&style=for-the-badge)](https://github.com/Astrotomic/stancy/blob/master/LICENSE)
 [![Offset Earth](https://img.shields.io/badge/Treeware-%F0%9F%8C%B3-green?style=for-the-badge&cacheSeconds=600)](https://offset.earth/treeware)
+[![Larabelles](https://img.shields.io/badge/Larabelles-%F0%9F%A6%84-lightpink?style=for-the-badge)](https://www.larabelles.com/)
 
 [![TravisCI](https://img.shields.io/travis/Astrotomic/stancy/master?label=TravisCI&style=flat-square)](https://travis-ci.org/Astrotomic/stancy/branches)
 [![StyleCI](https://styleci.io/repos/210212315/shield)](https://styleci.io/repos/210212315)
