@@ -43,15 +43,15 @@
     },
     "extra": {
         "laravel": {
-            "providers": [
-                "Astrotomic\\Stancy\\StancyServiceProvider"
-            ],
             "aliases": {
                 "ExportFactory": "Astrotomic\\Stancy\\Facades\\ExportFactory",
                 "FeedFactory": "Astrotomic\\Stancy\\Facades\\FeedFactory",
                 "PageFactory": "Astrotomic\\Stancy\\Facades\\PageFactory",
                 "SitemapFactory": "Astrotomic\\Stancy\\Facades\\SitemapFactory"
-            }
+            },
+            "providers": [
+                "Astrotomic\\Stancy\\StancyServiceProvider"
+            ]
         }
     },
     "autoload": {
